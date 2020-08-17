@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="InstagramContext.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.designer.cs">
