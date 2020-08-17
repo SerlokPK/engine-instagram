@@ -3,7 +3,6 @@ using Models.Account;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Headers;
 using System.Security.Claims;
 
 namespace Common.Helpers
