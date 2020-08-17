@@ -51,12 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminsRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="InstagramContext.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.designer.cs">
       <DependentUpon>202008171659489_UserModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008171900084_PasswordSaltAndStatusAddedToUser.cs" />
+    <Compile Include="Migrations\202008171900084_PasswordSaltAndStatusAddedToUser.designer.cs">
+      <DependentUpon>202008171900084_PasswordSaltAndStatusAddedToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008171901025_PasswordConvertedToByte.cs" />
+    <Compile Include="Migrations\202008171901025_PasswordConvertedToByte.designer.cs">
+      <DependentUpon>202008171901025_PasswordConvertedToByte.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +91,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008171659489_UserModelAdded.resx">
       <DependentUpon>202008171659489_UserModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008171900084_PasswordSaltAndStatusAddedToUser.resx">
+      <DependentUpon>202008171900084_PasswordSaltAndStatusAddedToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008171901025_PasswordConvertedToByte.resx">
+      <DependentUpon>202008171901025_PasswordConvertedToByte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -51,7 +51,7 @@ namespace engine_insta_back.Filters
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, tokenObj.Email),
-                    //new Claim(JwtHelper.IdClaim, tokenObj.UserId)
+                    new Claim(JwtHelper.IdClaim, tokenObj.UserId)
                 };
 
                 var identity = new ClaimsIdentity(claims, "Jwt");
