@@ -1,4 +1,4 @@
-﻿using Models.Users;
+﻿using Repository.Data;
 using System.Data.Entity;
 
 namespace Repository
