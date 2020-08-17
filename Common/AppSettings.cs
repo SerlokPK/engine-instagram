@@ -9,6 +9,7 @@ namespace Common
         private static Dictionary<string, object> _Settings = new Dictionary<string, object>();
 
         public static string JwtKey => Get<string>(nameof(JwtKey));
+        public static int TokenExpirationMinutes => Get<int>(nameof(TokenExpirationMinutes));
 
         private static T Get<T>(string key)
         {
