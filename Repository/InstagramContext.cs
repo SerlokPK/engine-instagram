@@ -11,5 +11,6 @@ namespace Repository
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
     }
 }

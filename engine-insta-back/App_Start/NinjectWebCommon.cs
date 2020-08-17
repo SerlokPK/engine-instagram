@@ -5,12 +5,14 @@ namespace engine_insta_back.App_Start
 {
     using System;
     using System.Web;
-
+    using Interface.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    using Repository.Account;
+    using Repository.Admin;
 
     public static class NinjectWebCommon 
     {
@@ -58,7 +60,8 @@ namespace engine_insta_back.App_Start
 
         private static void RegisterRepositories(IKernel kernel)
         {
-            
+            kernel.Bind<IAdminsRepository>().To<AdminsRepository>();
+            kernel.Bind<IAccountsRepository>().To<AccountsRepository>();
         }
 
         /// <summary>

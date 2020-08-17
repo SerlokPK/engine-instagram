@@ -51,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountsRepository.cs" />
     <Compile Include="Admin\AdminsRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserLog.cs" />
     <Compile Include="InstagramContext.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.cs" />
     <Compile Include="Migrations\202008171659489_UserModelAdded.designer.cs">
@@ -66,6 +68,10 @@
     <Compile Include="Migrations\202008171901025_PasswordConvertedToByte.cs" />
     <Compile Include="Migrations\202008171901025_PasswordConvertedToByte.designer.cs">
       <DependentUpon>202008171901025_PasswordConvertedToByte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008171921512_CreatedUserLog.cs" />
+    <Compile Include="Migrations\202008171921512_CreatedUserLog.designer.cs">
+      <DependentUpon>202008171921512_CreatedUserLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008171901025_PasswordConvertedToByte.resx">
       <DependentUpon>202008171901025_PasswordConvertedToByte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008171921512_CreatedUserLog.resx">
+      <DependentUpon>202008171921512_CreatedUserLog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
