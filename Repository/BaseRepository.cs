@@ -2,6 +2,9 @@
 {
     public class BaseRepository
     {
-        // TODO: add method for GetContext
+        public InstagramContext GetContext()
+        {
+            return new InstagramContext();
+        }
     }
 }
