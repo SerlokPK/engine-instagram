@@ -8,6 +8,7 @@ using System.Web.Http;
 namespace engine_insta_back.Controllers
 {
     [JwtAuthenticationFilter]
+    [ValidationActionFilter]
     public class BaseController : ApiController
     {
         internal IdentityUser GetUser()
