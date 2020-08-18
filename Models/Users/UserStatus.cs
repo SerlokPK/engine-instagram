@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Models.ModelAttributes;
 
 namespace Models.Users
 {
@@ -21,15 +17,15 @@ namespace Models.Users
             Name = name;
         }
 
-        public static UserStatus Pending = new UserStatus("P", "Pending");
+        public static UserStatus Pending = new UserStatus("P", Localization.Users_PendingStatus);
 
-        public static UserStatus Active = new UserStatus("A", "Active");
+        public static UserStatus Active = new UserStatus("A", Localization.Users_ActiveStatus);
 
-        public static UserStatus Blocked = new UserStatus("B", "Blocked");
+        public static UserStatus Blocked = new UserStatus("B", Localization.Users_BlockedStatus);
 
-        public static UserStatus Deleted = new UserStatus("D", "Deleted");
+        public static UserStatus Deleted = new UserStatus("D", Localization.Users_DeletedStatus);
 
-        public static UserStatus Unknown = new UserStatus("X", "Unknown");
+        public static UserStatus Unknown = new UserStatus("X", Localization.Users_Unknown);
 
         public static UserStatus GetStatus(string status)
         {

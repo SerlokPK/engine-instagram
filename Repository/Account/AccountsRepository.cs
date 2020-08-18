@@ -23,7 +23,7 @@ namespace Repository.Account
                     return null;
                 }
 
-                if (user.Status != UserStatus.Active.Status || user.Password == null)
+                if (user.Status != UserStatus.Active.Status)
                 {
                     return new UserAuth()
                     {
