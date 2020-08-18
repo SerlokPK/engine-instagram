@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white-95 pt-4">
     <b-container />
-    <slot />
+    <router-view />
   </div>
 </template>
 

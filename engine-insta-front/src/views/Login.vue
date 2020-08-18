@@ -39,7 +39,7 @@
               <b-form @submit.stop.prevent="onSubmit">
                 <div class="py-3">
                   <div class="form-group">
-                    <b-form-input
+                    <!-- <b-form-input
                       id="email"
                       v-model="$v.form.email.$model"
                       size="lg"
@@ -48,13 +48,13 @@
                       :placeholder="$t('signin.emailPlaceholder')"
                       :state="!$v.form.email.$error && null"
                       aria-describedby="username-feedback"
-                    />
+                    /> -->
                     <b-form-invalid-feedback id="username-feedback">
-                      {{ $t('signin.enterEmail') }}
+                      enter email
                     </b-form-invalid-feedback>
                   </div>
                   <div class="form-group">
-                    <b-form-input
+                    <!-- <b-form-input
                       id="password"
                       v-model="$v.form.password.$model"
                       type="password"
@@ -64,11 +64,11 @@
                       :placeholder="$t('signin.PasswordPlaceholder')"
                       :state="!$v.form.password.$error && null"
                       aria-describedby="password-feedback"
-                    />
+                    /> -->
                     <b-form-invalid-feedback
                       id="password-feedback"
                     >
-                      {{ $t('signin.enterPassword') }}
+                      enter pw
                     </b-form-invalid-feedback>
                   </div>
                   <div class="form-group">
@@ -76,7 +76,7 @@
                       id="remember"
                       name="remember"
                     >
-                      {{ $t('signin.rememberMe') }}
+                      remember me
                     </b-form-checkbox>
                   </div>
                 </div>
@@ -91,7 +91,7 @@
                       block
                     >
                       <i class="fa fa-fw fa-sign-in-alt mr-1" />
-                      {{ $t("signin.signInButton") }}
+                      Login
                     </b-button>
                   </b-col>
                 </b-row>

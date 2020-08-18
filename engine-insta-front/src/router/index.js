@@ -1,15 +1,21 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import authorizationLayout from '../layouts/authorizationLayout';
+import AuthorizationLayout from '../layouts/AuthorizationLayout';
+import LoginPage from '../views/Login';
 
 Vue.use(Router);
 
 const routes = [
     {
       path: '/account',
-      component: authorizationLayout,
+      component: AuthorizationLayout,
       children: [
+        {
+          path: 'login',
+          name: 'Log in',
+          component: LoginPage
+        }
       ]
     },
     // {
