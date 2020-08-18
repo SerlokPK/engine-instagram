@@ -1,114 +1,65 @@
 <template>
-  <div class="hero-static">
-    <div class="content">
-      <b-row class="justify-content-center">
-        <b-col
-          md="8"
-          lg="6"
-          xl="4"
-        >
-          <base-block
-            themed
-            fx-shadow
-            class="mb-0"
-            :title="'Login'"
-          >
-            <template #options>
-              <router-link
-                to="/account/forgotpassword"
-                class="btn-block-option font-size-sm"
-              >
-                Forgot password
-              </router-link>
-              <router-link
-                v-b-tooltip.hover.nofade.left="'Register'"
-                to="/account/signup"
-                class="btn-block-option"
-              >
-                <i class="fa fa-user-plus" />
-              </router-link>
-            </template>
-            <div class="p-sm-3 px-lg-4 py-lg-5">
-              <h1 class="mb-2">
-                Login
-              </h1>
-              <p>Please login</p>
-              <b-form @submit.stop.prevent="onSubmit">
-                <div class="py-3">
-                  <div class="form-group">
-                    <!-- <b-form-input
-                      id="email"
-                      v-model="$v.form.email.$model"
-                      size="lg"
-                      class="form-control-alt"
-                      name="email"
-                      :placeholder="$t('signin.emailPlaceholder')"
-                      :state="!$v.form.email.$error && null"
-                      aria-describedby="username-feedback"
-                    /> -->
-                    <b-form-invalid-feedback id="username-feedback">
-                      enter email
-                    </b-form-invalid-feedback>
-                  </div>
-                  <div class="form-group">
-                    <!-- <b-form-input
-                      id="password"
-                      v-model="$v.form.password.$model"
-                      type="password"
-                      size="lg"
-                      class="form-control-alt"
-                      name="password"
-                      :placeholder="$t('signin.PasswordPlaceholder')"
-                      :state="!$v.form.password.$error && null"
-                      aria-describedby="password-feedback"
-                    /> -->
-                    <b-form-invalid-feedback
-                      id="password-feedback"
-                    >
-                      enter pw
-                    </b-form-invalid-feedback>
-                  </div>
-                  <div class="form-group">
-                    <b-form-checkbox
-                      id="remember"
-                      name="remember"
-                    >
-                      remember me
-                    </b-form-checkbox>
-                  </div>
-                </div>
-                <b-row class="form-group">
-                  <b-col
-                    md="6"
-                    xl="5"
-                  >
-                    <b-button
-                      type="submit"
-                      variant="primary"
-                      block
-                    >
-                      <i class="fa fa-fw fa-sign-in-alt mr-1" />
-                      Login
-                    </b-button>
-                  </b-col>
-                </b-row>
-              </b-form>
-            </div>
-          </base-block>
-        </b-col>
-      </b-row>
-    </div>
-    <div class="content content-full font-size-sm text-muted text-center">
-      <strong>Neki tekst</strong>
-      &copy; Copyright
-    </div>
+  <div>
+    <b-form
+      @submit.prevent="onSubmit"
+    >
+      <b-form-group
+        id="input-group-1"
+        label="Email address:"
+        label-for="input-1"
+      >
+        <b-form-input
+          id="input-1"
+          v-model="form.email"
+          type="email"
+          required
+          placeholder="Enter email"
+        />
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-2"
+        label="Your password:"
+        label-for="input-2"
+      >
+        <b-form-input
+          id="input-2"
+          v-model="form.password"
+          required
+          placeholder="Enter password"
+          type="password"
+        />
+      </b-form-group>
+
+      <b-button
+        type="submit"
+        variant="primary"
+      >
+        Submit
+      </b-button>
+    </b-form>
   </div>
 </template>
 
 <script>
-export default {
-
-};
+  import { createNamespacedHelpers } from 'vuex';
+  const { mapActions } = createNamespacedHelpers('account');
+  export default {
+    data() {
+      return {
+        form: {
+          email: '',
+          password: '',
+        }
+      };
+    },
+    methods: {
+      ...mapActions(['logIn']),
+      async onSubmit() {
+        await this.logIn(this.form);
+      },
+    }
+  };
 </script>
 
 <style>
