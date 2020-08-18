@@ -1,11 +1,13 @@
-﻿using Interface.Services;
+﻿using engine_insta_back.Filters;
+using Interface.Services;
 using Models.Account.ApiModels;
 using System.Web.Http;
 
 namespace engine_insta_back.Controllers
 {
     [RoutePrefix("api/account")]
-    public class AccountController : BaseController
+    [ValidationActionFilter]
+    public class AccountController : ApiController
     {
         private readonly IAccountsService _accountsService;
 
@@ -18,7 +20,7 @@ namespace engine_insta_back.Controllers
         [Route("login")]
         public IHttpActionResult Login(LoginModel model)
         {
-            var userAuth = _accountsService.Login(model.Email, model.Password);
+            var userAuth = _accountsService.Login(model);
 
             return Ok(userAuth);
         }

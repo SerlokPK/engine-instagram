@@ -12,13 +12,9 @@ namespace engine_insta_back.Filters
         {
             var modelState = actionContext.ModelState;
             var controller = actionContext.ControllerContext?.Controller as BaseController;
-            if (controller != null)
+            if (controller != null && !modelState.IsValid)
             {
-                var user = controller.GetUser();
-                if (user != null && !modelState.IsValid)
-                {
-                    actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, modelState);
-                }
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, modelState);
             }
         }
     }

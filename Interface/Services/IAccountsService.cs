@@ -1,9 +1,10 @@
-﻿using Models.Users;
+﻿using Models.Account.ApiModels;
+using Models.Users;
 
 namespace Interface.Services
 {
     public interface IAccountsService
     {
-        UserAuth Login(string email, string password);
+        UserAuth Login(LoginModel model);
     }
 }

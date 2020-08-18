@@ -45,6 +45,8 @@
     <Compile Include="Account\ApiModels\LoginModel.cs" />
     <Compile Include="Account\IdentityUser.cs" />
     <Compile Include="Account\Token.cs" />
+    <Compile Include="ModelAttributes\Localization.cs" />
+    <Compile Include="ModelAttributes\Regex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UserAuth.cs" />
