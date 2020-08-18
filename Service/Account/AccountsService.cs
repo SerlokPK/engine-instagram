@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
@@ -22,7 +23,7 @@ namespace Service.Account
 
                 return user;
             }
-            //throw new UnauthorizedException(_dictionaryService.GetLocalization(languageSign, Constants.Localization.WrongCredentials));
+            throw new UnauthorizedException("PROMENI TEKST");
         }
     }
 }
