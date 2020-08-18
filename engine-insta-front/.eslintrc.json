@@ -4,6 +4,9 @@
     "node": true
   },
   "extends": ["plugin:vue/recommended", "eslint:recommended"],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
   "rules": {
     "semi": [2, "always"],
     "linebreak-style": 0,
