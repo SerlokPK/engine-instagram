@@ -7,7 +7,6 @@
           lg="6"
           xl="4"
         >
-          <!-- Sign In Block -->
           <base-block
             themed
             fx-shadow
@@ -34,8 +33,6 @@
                 Login
               </h1>
               <p>Please login</p>
-
-              <!-- Sign In Form -->
               <b-form @submit.stop.prevent="onSubmit">
                 <div class="py-3">
                   <div class="form-group">
@@ -96,10 +93,8 @@
                   </b-col>
                 </b-row>
               </b-form>
-              <!-- END Sign In Form -->
             </div>
           </base-block>
-          <!-- END Sign In Block -->
         </b-col>
       </b-row>
     </div>
