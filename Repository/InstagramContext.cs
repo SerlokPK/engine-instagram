@@ -1,4 +1,4 @@
-﻿using Models.Users;
+﻿using Repository.Data;
 using System.Data.Entity;
 
 namespace Repository
@@ -11,5 +11,6 @@ namespace Repository
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<UserLog> UserLogs { get; set; }
     }
 }

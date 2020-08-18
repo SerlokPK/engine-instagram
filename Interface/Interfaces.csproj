@@ -42,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAccountsRepository.cs" />
+    <Compile Include="Repositories\IAdminsRepository.cs" />
+    <Compile Include="Services\IAccountsService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{c7955b63-cb56-4890-aaa4-7cd3f931a52d}</Project>

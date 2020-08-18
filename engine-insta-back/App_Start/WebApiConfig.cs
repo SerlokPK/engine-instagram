@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using Common;
+using engine_insta_back.Helpers;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
 
 namespace engine_insta_back
 {
@@ -6,6 +10,10 @@ namespace engine_insta_back
     {
         public static void Register(HttpConfiguration config)
         {
+            var cors = new EnableCorsAttribute(AppSettings.AllowedOrigins, "*", "*");
+            config.EnableCors(cors);
+
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
             // Web API configuration and services
 
             // Web API routes
