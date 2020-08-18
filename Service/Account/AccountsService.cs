@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Constants;
 using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
@@ -23,7 +24,7 @@ namespace Service.Account
 
                 return user;
             }
-            throw new UnauthorizedException("PROMENI TEKST");
+            throw new UnauthorizedException(Localization.Login_WrongCredentials);
         }
     }
 }
