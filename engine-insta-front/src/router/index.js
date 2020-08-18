@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import authorizationLayout from '../layouts/authorizationLayout';
+
 Vue.use(Router);
 
 const routes = [
-    // {
-    //   path: '/account',
-    //   component: LayoutSimple,
-    //   children: [
-    //   ]
-    // },
+    {
+      path: '/account',
+      component: authorizationLayout,
+      children: [
+      ]
+    },
     // {
     //   path: '/',
     //   component: LayoutBackend,
@@ -18,10 +20,10 @@ const routes = [
     //   },
     //   children: []
     // }
-  ];
+];
   
   // Router Configuration
-  export default new Router({
+export default new Router({
     mode: 'history',
     linkActiveClass: 'active',
     linkExactActiveClass: '',
@@ -29,4 +31,4 @@ const routes = [
       return { x: 0, y: 0 };
     },
     routes
-  });
+});

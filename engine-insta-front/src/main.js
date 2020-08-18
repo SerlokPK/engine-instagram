@@ -10,6 +10,18 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.getters['account/isAuthenticated']) {
+      next({ path: '/account/login' });
+  } else {
+      if(!to.matched.some(record => record.meta.requiresAuth) && store.getters['account/isAuthenticated']) {
+        next();
+      } else {
+        next();
+      }
+  }
+});
+
 new Vue({
   router,
   store,
