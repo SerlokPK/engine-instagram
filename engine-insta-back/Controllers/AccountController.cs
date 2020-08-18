@@ -20,7 +20,7 @@ namespace engine_insta_back.Controllers
         [Route("login")]
         public IHttpActionResult Login(LoginModel model)
         {
-            var userAuth = _accountsService.Login(model);
+            var userAuth = _accountsService.Login(model.Email, model.Password);
 
             return Ok(userAuth);
         }

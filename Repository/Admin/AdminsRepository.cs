@@ -1,6 +1,7 @@
 ﻿using Common.Helpers;
 using Interface.Repositories;
 using Models.Users;
+using System;
 using System.Linq;
 
 namespace Repository.Admin
@@ -13,7 +14,7 @@ namespace Repository.Admin
             using (var context = GetContext())
             {
                 var user = context.Users.SingleOrDefault(u => u.UserId == DefaultUserId);
-                var saltPassword = PasswordHelper.GenerateRandomPassword(Common.Constants.Account.UniqueKeyLength, true, true);
+                var saltPassword = PasswordHelper.GenerateRandomPassword(Common.Constants.Account.UniqueKeyLength, false, false);
                 var shaPassword = HashHelper.Hash(saltPassword + password);
                 if (user != null)
                 {
@@ -30,7 +31,8 @@ namespace Repository.Admin
                         Password = shaPassword,
                         PasswordSalt = saltPassword,
                         Status = UserStatus.Active.Status,
-                        Username = "Serlok"
+                        Username = "Serlok",
+                        Created = DateTime.Now
                     });
                 }
                 context.SaveChanges();

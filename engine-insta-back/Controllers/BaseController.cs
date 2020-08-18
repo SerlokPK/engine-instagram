@@ -1,4 +1,5 @@
-﻿using Common.Helpers;
+﻿using Common.Constants;
+using Common.Helpers;
 using engine_insta_back.Filters;
 using Models.Account;
 using System.Security.Authentication;
@@ -16,7 +17,7 @@ namespace engine_insta_back.Controllers
             var claimsIdentity = (ClaimsIdentity)this.RequestContext.Principal.Identity;
             if (claimsIdentity == null)
             {
-                throw new AuthenticationException("User not logged in!");
+                throw new AuthenticationException(Localization.Base_NotLoggedIn);
             }
             var user = JwtHelper.GetUser(claimsIdentity.Claims);
 
