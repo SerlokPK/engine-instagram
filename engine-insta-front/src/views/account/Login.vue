@@ -98,7 +98,6 @@ export default {
       }),
       async onSubmit() {
         try {
-          console.log(this.$v.form.password);
           this.$v.form.$touch();
           if (!this.$v.form.$anyError) {
             await this.logIn(this.form);
