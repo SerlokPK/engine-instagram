@@ -73,6 +73,10 @@
     <Compile Include="Migrations\202008171921512_CreatedUserLog.designer.cs">
       <DependentUpon>202008171921512_CreatedUserLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008191835246_AddedUserKeyAndResetKeyToUser.cs" />
+    <Compile Include="Migrations\202008191835246_AddedUserKeyAndResetKeyToUser.designer.cs">
+      <DependentUpon>202008191835246_AddedUserKeyAndResetKeyToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008171921512_CreatedUserLog.resx">
       <DependentUpon>202008171921512_CreatedUserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008191835246_AddedUserKeyAndResetKeyToUser.resx">
+      <DependentUpon>202008191835246_AddedUserKeyAndResetKeyToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

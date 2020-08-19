@@ -6,7 +6,11 @@
 
         public const string Login_EmailRequired = "Email is required";
         public const string Login_EmailFormatNotValid = "Email format not valid";
-        public const string Login_LongPassword = "Password too long";
+        public const string Login_LongPassword = "Password can't be over 50 characters";
+        public const string Login_PasswordRequired = "Password required";
+        public const string Register_UsernameRequired = "Username required";
+        public const string Register_LongUsername = "Username can't be over 50 characters";
+        public const string Register_PasswordsArentSame = "Password and confirm password must be identical";
 
         #endregion
 

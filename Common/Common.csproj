@@ -59,6 +59,7 @@
     <Compile Include="Constants\Localization.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
+    <Compile Include="Exceptions\ConflictException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />

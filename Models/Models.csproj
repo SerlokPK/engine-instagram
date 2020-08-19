@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\ApiModels\LoginModel.cs" />
+    <Compile Include="Account\ApiModels\RegistrationModel.cs" />
     <Compile Include="Account\IdentityUser.cs" />
+    <Compile Include="Account\RegisteredUser.cs" />
     <Compile Include="Account\Token.cs" />
     <Compile Include="ModelAttributes\Localization.cs" />
     <Compile Include="ModelAttributes\Regex.cs" />

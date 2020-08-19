@@ -11,6 +11,7 @@ namespace Common
         public static string JwtKey => Get<string>(nameof(JwtKey));
         public static int TokenExpirationMinutes => Get<int>(nameof(TokenExpirationMinutes));
         public static string AllowedOrigins => Get<string>(nameof(AllowedOrigins));
+        public static string WebsiteUrl => Get<string>(nameof(WebsiteUrl));
 
         private static T Get<T>(string key)
         {

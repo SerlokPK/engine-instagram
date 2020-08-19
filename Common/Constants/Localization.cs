@@ -7,6 +7,7 @@
         #region Account
 
         public const string Login_WrongCredentials = "Wrong credentials";
+        public const string Register_UsernameTaken = "Username taken";
 
         #endregion
     }

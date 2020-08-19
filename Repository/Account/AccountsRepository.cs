@@ -1,5 +1,7 @@
-﻿using Common.Helpers;
+﻿using Common.Constants;
+using Common.Helpers;
 using Interface.Repositories;
+using Models.Account;
 using Models.Users;
 using System;
 using System.Linq;
@@ -69,6 +71,42 @@ namespace Repository.Account
                 context.SaveChanges();
 
                 return userAuth;
+            }
+        }
+        public RegisteredUser Register(string email, string username, string password, string confirmPassword)
+        {
+            using (var context = GetContext())
+            {
+                if (context.Users.Any(u => u.Email == email))
+                {
+                    return null;
+                }
+                if (context.Users.Any(u => u.Username == username))
+                {
+                    return new RegisteredUser { ErrorMessage = Localization.Register_UsernameTaken };
+                }
+
+                var saltPassword = PasswordHelper.GenerateRandomPassword(32, false, false);
+                var shaPassword = HashHelper.Hash(saltPassword + password);
+                var userId = context.Users.Any() ? context.Users.Max(x => x.UserId) + 1 : 1;
+
+                var newUser = new Data.User
+                {
+                    UserId = userId,
+                    Username = username,
+                    Password = shaPassword,
+                    PasswordSalt = saltPassword,
+                    Created = DateTime.Now,
+                    Status = UserStatus.Pending.Status,
+                    UserKey = PasswordHelper.GenerateUniqueKey(32),
+                    ResetKey = PasswordHelper.GenerateUniqueKey(32),
+                    Email = email,
+                };
+
+                context.Users.Add(newUser);
+                context.SaveChanges();
+
+                return new RegisteredUser { UserId = userId, UserKey = newUser.UserKey };
             }
         }
     }

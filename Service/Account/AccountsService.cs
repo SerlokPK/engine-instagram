@@ -4,7 +4,6 @@ using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
-using Models.Account.ApiModels;
 using Models.Users;
 
 namespace Service.Account
@@ -26,6 +25,24 @@ namespace Service.Account
                 return user;
             }
             throw new UnauthorizedException(Localization.Login_WrongCredentials);
+        }
+
+        public void Register(string email, string username, string password, string confirmPassword)
+        {
+            var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
+            if (registeredUser != null)
+            {
+                //var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
+                //var mailSubject = webSiteUserData.GetLocalization(Localization.MailRegisterSubject);
+                //_mailService.RegistrationSendEmailToNewUser(webSiteUserData.WebSite.WebSiteUrl, mailSubject, webSiteUserData.User.LanguageSign, model.Email, $"{model.FirstName} {model.LastName}", link);
+
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(registeredUser.ErrorMessage))
+            {
+                throw new ConflictException(registeredUser.ErrorMessage);
+            }
         }
     }
 }
