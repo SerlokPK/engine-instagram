@@ -4,34 +4,34 @@
       @submit.prevent="onSubmit"
     >
       <b-form-group
-        label="Email address:"
+        :label="$t('login.emailLabel')"
         label-for="input-1"
       >
         <b-form-input
           id="email"
           v-model="$v.form.email.$model"
           type="email"
-          placeholder="Enter email"
+          :placeholder="$t('login.emailPlaceholder')"
           :state="!$v.form.email.$error && null"
         />
         <b-form-invalid-feedback>
-          {{ getEmailValidationMessage }}
+          {{ $t(getEmailValidationMessage) }}
         </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
-        label="Your password:"
+        :label="$t('login.passwordLabel')"
         label-for="input-2"
       >
         <b-form-input
           id="password"
           v-model="$v.form.password.$model"
-          placeholder="Enter password"
+          :placeholder="$t('login.passwordPlaceholder')"
           type="password"
           :state="!$v.form.password.$error && null"
         />
         <b-form-invalid-feedback>
-          {{ getPasswordValidationMessage }}
+          {{ $t(getPasswordValidationMessage) }}
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -77,18 +77,18 @@ export default {
     computed: {
       getPasswordValidationMessage() {
         if(!this.$v.form.password.required) {
-          return "Password is required";
+          return "login.passwordRequired";
         } else if(!this.$v.form.password.passwordValidation) {
-          return "Password must have 1 dig...";
+          return "login.passwordFormat";
         }else {
-          return "Password must be 8 char long";
+          return "login.passwordLength";
         }
       },
       getEmailValidationMessage() {
         if(!this.$v.form.email.required) {
-          return "Email is required";
+          return "login.emailRequired";
         } else {
-          return "Email format invalid";
+          return "login.emailFormat";
         }
       }
     },
