@@ -7,6 +7,8 @@ import store from './store';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+import { storeInitialInfo } from './router/middlewares/initialization';
+
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
@@ -22,8 +24,10 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app');
+storeInitialInfo().then(() => {
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app');
+});
