@@ -4,31 +4,35 @@
       @submit.prevent="onSubmit"
     >
       <b-form-group
-        id="input-group-1"
         label="Email address:"
         label-for="input-1"
       >
         <b-form-input
-          id="input-1"
-          v-model="form.email"
+          id="email"
+          v-model="$v.form.email.$model"
           type="email"
-          required
           placeholder="Enter email"
+          :state="!$v.form.email.$error && null"
         />
+        <b-form-invalid-feedback>
+          Invalid email format
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
-        id="input-group-2"
         label="Your password:"
         label-for="input-2"
       >
         <b-form-input
-          id="input-2"
-          v-model="form.password"
-          required
+          id="password"
+          v-model="$v.form.password.$model"
           placeholder="Enter password"
           type="password"
+          :state="!$v.form.password.$error && null"
         />
+        <b-form-invalid-feedback>
+          Password must have 8 characters
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-button
@@ -45,6 +49,7 @@
 import { mapActions } from 'vuex';
 import { validationMixin } from "vuelidate";
 import { required, minLength, email } from "vuelidate/lib/validators";
+import { passwordValidation } from '../../helpers/validator';
 
 export default {
     mixins: [validationMixin],
@@ -64,7 +69,8 @@ export default {
         },
         password: {
           required,
-          minLength: minLength(8)
+          minLength: minLength(8),
+          passwordValidation
         }
       }
     },
@@ -74,8 +80,11 @@ export default {
       }),
       async onSubmit() {
         try {
-          await this.logIn(this.form);
-          this.$router.push('/');
+          this.$v.form.$touch();
+          if (!this.$v.form.$anyError) {
+            await this.logIn(this.form);
+            this.$router.push('/');
+          }
         } catch(error) {
           // 
         }
