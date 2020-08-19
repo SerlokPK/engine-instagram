@@ -57,7 +57,12 @@
         logIn: "logIn"
       }),
       async onSubmit() {
-        await this.logIn(this.form);
+        try {
+          await this.logIn(this.form);
+          this.$router.push('/');
+        } catch(error) {
+          // 
+        }
       },
     }
   };

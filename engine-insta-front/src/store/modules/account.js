@@ -21,11 +21,16 @@ export const getters = {
 
 export const actions = {
     async logIn(context, payload) {
-        const response = await AccountApi.logIn(payload);
-        if(response.data.login.user.userStatus === USER_CONSTANTS.statusActive) {
-            localStorage.setItem('token', response.data.login.token);
-            context.commit("SET_TOKEN", response.data.login.token);
-            //context.commit("user/SET_USER", response.data.login, { root:true });
+        try {
+            const response = await AccountApi.logIn(payload);
+            if(response.data.login.user.status === USER_CONSTANTS.statusActive) {
+                localStorage.setItem('token', response.data.login.token);
+                context.commit("SET_TOKEN", response.data.login.token);
+                context.commit("SET_USER", response.data.login, { root:true });
+            }
+        }catch (error) {
+            // TODO: set ntf
+            return Promise.reject();
         }
     }
 };
