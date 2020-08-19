@@ -29,7 +29,7 @@ const routes = [
       },
       children: [
         {
-          path: 'test',
+          path: '/',
           name: 'Test',
           component: TestPage
         }

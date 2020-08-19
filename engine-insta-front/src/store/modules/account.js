@@ -33,5 +33,9 @@ export const actions = {
             // TODO: set ntf
             return Promise.reject();
         }
+    },
+    logOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
     }
 };

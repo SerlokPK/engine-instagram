@@ -42,8 +42,12 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  export default {
+import { mapActions } from 'vuex';
+import { validationMixin } from "vuelidate";
+import { required, minLength, email } from "vuelidate/lib/validators";
+
+export default {
+    mixins: [validationMixin],
     data() {
       return {
         form: {
@@ -51,6 +55,18 @@
           password: '',
         }
       };
+    },
+    validations: {
+      form: {
+        email: {
+          required,
+          email
+        },
+        password: {
+          required,
+          minLength: minLength(8)
+        }
+      }
     },
     methods: {
       ...mapActions({
@@ -65,7 +81,7 @@
         }
       },
     }
-  };
+};
 </script>
 
 <style>
