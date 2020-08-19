@@ -30,7 +30,7 @@ const routes = [
       children: [
         {
           path: 'test',
-          name: 'test',
+          name: 'Test',
           component: TestPage
         }
       ]
