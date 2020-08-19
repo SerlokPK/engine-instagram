@@ -15,7 +15,7 @@
           :state="!$v.form.email.$error && null"
         />
         <b-form-invalid-feedback>
-          Invalid email format
+          {{ getEmailValidationMessage }}
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -31,7 +31,7 @@
           :state="!$v.form.password.$error && null"
         />
         <b-form-invalid-feedback>
-          Password must have 8 characters
+          {{ getPasswordValidationMessage }}
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -74,12 +74,31 @@ export default {
         }
       }
     },
+    computed: {
+      getPasswordValidationMessage() {
+        if(!this.$v.form.password.required) {
+          return "Password is required";
+        } else if(!this.$v.form.password.passwordValidation) {
+          return "Password must have 1 dig...";
+        }else {
+          return "Password must be 8 char long";
+        }
+      },
+      getEmailValidationMessage() {
+        if(!this.$v.form.email.required) {
+          return "Email is required";
+        } else {
+          return "Email format invalid";
+        }
+      }
+    },
     methods: {
       ...mapActions({
         logIn: "logIn"
       }),
       async onSubmit() {
         try {
+          console.log(this.$v.form.password);
           this.$v.form.$touch();
           if (!this.$v.form.$anyError) {
             await this.logIn(this.form);
