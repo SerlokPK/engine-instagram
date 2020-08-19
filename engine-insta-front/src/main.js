@@ -7,11 +7,27 @@ import store from './store';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+import { storeInitialInfo } from './router/middlewares/initialization';
+
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app');
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.isAuthenticated) {
+      next({ path: '/account/login' });
+  } else {
+      if(!to.matched.some(record => record.meta.requiresAuth) && store.getters.isAuthenticated) {
+        next({ path: '/' });
+      } else {
+        next();
+      }
+  }
+});
+
+storeInitialInfo().then(() => {
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app');
+});
