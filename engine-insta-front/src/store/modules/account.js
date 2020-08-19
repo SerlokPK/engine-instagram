@@ -26,11 +26,16 @@ export const actions = {
             if(response.data.login.user.status === USER_CONSTANTS.statusActive) {
                 localStorage.setItem('token', response.data.login.token);
                 context.commit("SET_TOKEN", response.data.login.token);
-                context.commit("SET_USER", response.data.login, { root:true });
+                localStorage.setItem('user', JSON.stringify(response.data.login.user));
+                context.commit("SET_USER", response.data.login.user);
             }
         }catch (error) {
             // TODO: set ntf
             return Promise.reject();
         }
+    },
+    logOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
     }
 };

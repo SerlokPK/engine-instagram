@@ -4,31 +4,35 @@
       @submit.prevent="onSubmit"
     >
       <b-form-group
-        id="input-group-1"
         label="Email address:"
         label-for="input-1"
       >
         <b-form-input
-          id="input-1"
-          v-model="form.email"
+          id="email"
+          v-model="$v.form.email.$model"
           type="email"
-          required
           placeholder="Enter email"
+          :state="!$v.form.email.$error && null"
         />
+        <b-form-invalid-feedback>
+          {{ getEmailValidationMessage }}
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
-        id="input-group-2"
         label="Your password:"
         label-for="input-2"
       >
         <b-form-input
-          id="input-2"
-          v-model="form.password"
-          required
+          id="password"
+          v-model="$v.form.password.$model"
           placeholder="Enter password"
           type="password"
+          :state="!$v.form.password.$error && null"
         />
+        <b-form-invalid-feedback>
+          {{ getPasswordValidationMessage }}
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-button
@@ -42,8 +46,13 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  export default {
+import { mapActions } from 'vuex';
+import { validationMixin } from "vuelidate";
+import { required, minLength, email } from "vuelidate/lib/validators";
+import { passwordValidation } from '../../helpers/validator';
+
+export default {
+    mixins: [validationMixin],
     data() {
       return {
         form: {
@@ -52,20 +61,54 @@
         }
       };
     },
+    validations: {
+      form: {
+        email: {
+          required,
+          email
+        },
+        password: {
+          required,
+          minLength: minLength(8),
+          passwordValidation
+        }
+      }
+    },
+    computed: {
+      getPasswordValidationMessage() {
+        if(!this.$v.form.password.required) {
+          return "Password is required";
+        } else if(!this.$v.form.password.passwordValidation) {
+          return "Password must have 1 dig...";
+        }else {
+          return "Password must be 8 char long";
+        }
+      },
+      getEmailValidationMessage() {
+        if(!this.$v.form.email.required) {
+          return "Email is required";
+        } else {
+          return "Email format invalid";
+        }
+      }
+    },
     methods: {
       ...mapActions({
         logIn: "logIn"
       }),
       async onSubmit() {
         try {
-          await this.logIn(this.form);
-          this.$router.push('/');
+          this.$v.form.$touch();
+          if (!this.$v.form.$anyError) {
+            await this.logIn(this.form);
+            this.$router.push('/');
+          }
         } catch(error) {
           // 
         }
       },
     }
-  };
+};
 </script>
 
 <style>
