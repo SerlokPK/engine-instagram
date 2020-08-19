@@ -12,6 +12,7 @@ namespace Common
         public static int TokenExpirationMinutes => Get<int>(nameof(TokenExpirationMinutes));
         public static string AllowedOrigins => Get<string>(nameof(AllowedOrigins));
         public static string WebsiteUrl => Get<string>(nameof(WebsiteUrl));
+        public static string EmailTemplatePath => Get<string>(nameof(EmailTemplatePath));
 
         private static T Get<T>(string key)
         {
