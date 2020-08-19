@@ -42,8 +42,7 @@
 </template>
 
 <script>
-  import { createNamespacedHelpers } from 'vuex';
-  const { mapActions } = createNamespacedHelpers('account');
+  import { mapActions } from 'vuex';
   export default {
     data() {
       return {
@@ -54,7 +53,9 @@
       };
     },
     methods: {
-      ...mapActions(['logIn']),
+      ...mapActions({
+        logIn: "logIn"
+      }),
       async onSubmit() {
         await this.logIn(this.form);
       },

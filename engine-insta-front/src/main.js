@@ -11,11 +11,11 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !store.getters['account/isAuthenticated']) {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.isAuthenticated) {
       next({ path: '/account/login' });
   } else {
-      if(!to.matched.some(record => record.meta.requiresAuth) && store.getters['account/isAuthenticated']) {
-        next();
+      if(!to.matched.some(record => record.meta.requiresAuth) && store.getters.isAuthenticated) {
+        next({ path: '/' });
       } else {
         next();
       }

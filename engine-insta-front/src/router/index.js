@@ -2,7 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import AuthorizationLayout from '../layouts/AuthorizationLayout';
-import LoginPage from '../views/Login';
+import MemberLayout from '../layouts/MemberLayout';
+
+import LoginPage from '../views/account/Login';
+import TestPage from '../views/member/Test';
 
 Vue.use(Router);
 
@@ -18,14 +21,20 @@ const routes = [
         }
       ]
     },
-    // {
-    //   path: '/',
-    //   component: LayoutBackend,
-    //   meta: {
-    //     requiresAuth: true
-    //   },
-    //   children: []
-    // }
+    {
+      path: '/',
+      component: MemberLayout,
+      meta: {
+        requiresAuth: true
+      },
+      children: [
+        {
+          path: 'test',
+          name: 'test',
+          component: TestPage
+        }
+      ]
+    }
 ];
   
   // Router Configuration
