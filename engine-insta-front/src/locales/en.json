@@ -1,0 +1,13 @@
+{
+  "login": {
+    "emailLabel": "Email address:",
+    "emailPlaceholder": "Enter email",
+    "passwordLabel": "Your password:",
+    "passwordPlaceholder": "Enter password",
+    "passwordRequired": "Password is required",
+    "passwordLength": "Password must have 8 characters",
+    "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
+    "emailRequired": "Email is required",
+    "emailFormat": "Email doesn't have valid format"
+  }
+}
