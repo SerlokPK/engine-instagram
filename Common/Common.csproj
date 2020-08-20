@@ -68,6 +68,7 @@
     <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\ConflictException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
