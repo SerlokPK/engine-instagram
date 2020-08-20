@@ -8,6 +8,7 @@
     "passwordLength": "Password must have 8 characters",
     "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
     "emailRequired": "Email is required",
-    "emailFormat": "Email doesn't have valid format"
+    "emailFormat": "Email doesn't have valid format",
+    "successfulLogin": "You've been successfully logged in"
   }
 }
