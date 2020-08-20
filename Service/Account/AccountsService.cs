@@ -11,9 +11,11 @@ namespace Service.Account
     public class AccountsService : IAccountsService
     {
         private readonly IAccountsRepository _accountsRepository;
-        public AccountsService(IAccountsRepository accountsRepository, IAdminsRepository adminsRepository)
+        private readonly IMailService _mailService;
+        public AccountsService(IAccountsRepository accountsRepository, IMailService mailService)
         {
             _accountsRepository = accountsRepository;
+            _mailService = mailService;
         }
         public UserAuth Login(string email, string password)
         {
@@ -33,12 +35,12 @@ namespace Service.Account
             if (registeredUser != null)
             {
                 var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
-                //_mailService.(Localization.Register_MailSubject, webSiteUserData.User.LanguageSign, model.Email, $"{model.FirstName} {model.LastName}", link);
+                _mailService.RegisteredUserSendMail(Localization.Register_MailSubject, Localization.Base_EnLanguageSign, email, username, link);
 
                 return;
             }
 
-            if (!string.IsNullOrEmpty(registeredUser.ErrorMessage))
+            if (registeredUser != null && !string.IsNullOrEmpty(registeredUser.ErrorMessage))
             {
                 throw new ConflictException(registeredUser.ErrorMessage);
             }

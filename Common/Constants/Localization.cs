@@ -3,6 +3,7 @@
     public class Localization
     {
         public const string Base_NotLoggedIn = "User not logged in!";
+        public const string Base_EnLanguageSign = "en";
 
         #region Account
 

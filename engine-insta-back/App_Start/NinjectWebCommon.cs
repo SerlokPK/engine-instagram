@@ -15,6 +15,7 @@ namespace engine_insta_back.App_Start
     using Repository.Account;
     using Repository.Admin;
     using Service.Account;
+    using Service.Mail;
 
     public static class NinjectWebCommon 
     {
@@ -73,7 +74,7 @@ namespace engine_insta_back.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IAccountsService>().To<AccountsService>();
-            //kernel.Bind<IMailService>().To<AccountsService>();
+            kernel.Bind<IMailService>().To<MailsService>();
         }
     }
 }

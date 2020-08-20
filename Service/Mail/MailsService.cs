@@ -1,4 +1,5 @@
 ﻿using Common;
+using Interface.Services;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace Service.Mail
 {
-    public class MailsService
+    public class MailsService : IMailService
     {
         private readonly Dictionary<string, string> MailTemplatesDict = new Dictionary<string, string>();
         private readonly Logger m_Logger = LogManager.GetCurrentClassLogger();
