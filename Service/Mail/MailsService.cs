@@ -1,4 +1,5 @@
 ﻿using Common;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,7 @@ namespace Service.Mail
     public class MailsService
     {
         private readonly Dictionary<string, string> MailTemplatesDict = new Dictionary<string, string>();
+        private readonly Logger m_Logger = LogManager.GetCurrentClassLogger();
 
         public void Clear()
         {
@@ -42,14 +44,14 @@ namespace Service.Mail
                         }
                         else
                         {
-                            //m_Logger.Error($"Email template {template} for language {languageSign} is empty.");
+                            m_Logger.Error($"Email template {template} for language {languageSign} is empty.");
                             return string.Empty;
                         }
                     }
                 }
                 catch (Exception exc)
                 {
-                    //m_Logger.Error(exc, $"Problem finding email template: {template} for language {languageSign}.");
+                    m_Logger.Error(exc, $"Problem finding email template: {template} for language {languageSign}.");
                 }
             }
             return string.Empty;
@@ -83,7 +85,7 @@ namespace Service.Mail
         {
             if (string.IsNullOrEmpty(body))
             {
-                //m_Logger.Error("SendEmailWithAttacment - No email body.");
+                m_Logger.Error("SendEmailWithAttacment - No email body.");
                 return false;
             }
             var layout = GetMailTemplate(languageSign);
@@ -114,7 +116,7 @@ namespace Service.Mail
                 return true;
             }
 
-            //m_Logger.Warn("Mail not configured.");
+            m_Logger.Warn("Mail not configured.");
             return false;
         }
 
@@ -154,10 +156,8 @@ namespace Service.Mail
 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //m_Logger.Error(e, $"Can not send mail to {mail.To}.");
-
                 return false;
             }
         }

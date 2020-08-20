@@ -33,7 +33,7 @@ namespace Service.Account
             if (registeredUser != null)
             {
                 var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
-                //_mailService.RegistrationSendEmailToNewUser(webSiteUserData.WebSite.WebSiteUrl, mailSubject, webSiteUserData.User.LanguageSign, model.Email, $"{model.FirstName} {model.LastName}", link);
+                //_mailService.(Localization.Register_MailSubject, webSiteUserData.User.LanguageSign, model.Email, $"{model.FirstName} {model.LastName}", link);
 
                 return;
             }

@@ -73,6 +73,7 @@ namespace engine_insta_back.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IAccountsService>().To<AccountsService>();
+            //kernel.Bind<IMailService>().To<AccountsService>();
         }
     }
 }
