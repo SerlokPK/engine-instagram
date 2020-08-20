@@ -5,6 +5,7 @@ import AuthorizationLayout from '../layouts/AuthorizationLayout';
 import MemberLayout from '../layouts/MemberLayout';
 
 import LoginPage from '../views/account/Login';
+import RegisterPage from '../views/account/Register';
 import TestPage from '../views/member/Test';
 
 Vue.use(Router);
@@ -18,6 +19,11 @@ const routes = [
           path: 'login',
           name: 'Log in',
           component: LoginPage
+        },
+        {
+          path: 'register',
+          name: 'Register',
+          component: RegisterPage
         }
       ]
     },

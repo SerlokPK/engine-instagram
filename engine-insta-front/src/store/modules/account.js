@@ -37,6 +37,16 @@ export const actions = {
             return Promise.reject();
         }
     },
+    async register(context, payload) {
+        try {
+            await AccountApi.logIn(payload);
+            context.dispatch('successNotification', "register.successfulRegistration");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.Message);
+        
+            return Promise.reject();
+        }
+    },
     logOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');

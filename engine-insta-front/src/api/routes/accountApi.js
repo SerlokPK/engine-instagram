@@ -9,5 +9,8 @@ export default {
                 LoginTransformer.transform
               ]
         });
+    },
+    register(data) {
+        return api.post('/account/register', data);
     }
 };

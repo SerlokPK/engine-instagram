@@ -1,11 +1,16 @@
 <template>
   <div>
+    <div>
+      <h3 class="pb-5">
+        {{ $t('login.title') }}
+      </h3>
+    </div>
     <b-form
       @submit.prevent="onSubmit"
     >
       <b-form-group
         :label="$t('login.emailLabel')"
-        label-for="input-1"
+        label-for="email"
       >
         <b-form-input
           id="email"
@@ -21,7 +26,7 @@
 
       <b-form-group
         :label="$t('login.passwordLabel')"
-        label-for="input-2"
+        label-for="password"
       >
         <b-form-input
           id="password"
@@ -36,10 +41,11 @@
       </b-form-group>
 
       <b-button
+        class="mt-2"
         type="submit"
         variant="primary"
       >
-        Submit
+        {{ $t('login.submitButton') }}
       </b-button>
     </b-form>
   </div>
