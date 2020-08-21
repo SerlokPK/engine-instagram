@@ -85,6 +85,10 @@
     <Compile Include="Migrations\202008191835246_AddedUserKeyAndResetKeyToUser.designer.cs">
       <DependentUpon>202008191835246_AddedUserKeyAndResetKeyToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008211749560_ResetKeyTimeAddedToUser.cs" />
+    <Compile Include="Migrations\202008211749560_ResetKeyTimeAddedToUser.designer.cs">
+      <DependentUpon>202008211749560_ResetKeyTimeAddedToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008191835246_AddedUserKeyAndResetKeyToUser.resx">
       <DependentUpon>202008191835246_AddedUserKeyAndResetKeyToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211749560_ResetKeyTimeAddedToUser.resx">
+      <DependentUpon>202008211749560_ResetKeyTimeAddedToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

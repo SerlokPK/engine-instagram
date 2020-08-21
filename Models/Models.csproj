@@ -47,6 +47,7 @@
     <Compile Include="Account\IdentityUser.cs" />
     <Compile Include="Account\RegisteredUser.cs" />
     <Compile Include="Account\Token.cs" />
+    <Compile Include="Account\UserReset.cs" />
     <Compile Include="Mail\Mail.cs" />
     <Compile Include="ModelAttributes\Localization.cs" />
     <Compile Include="ModelAttributes\Regex.cs" />

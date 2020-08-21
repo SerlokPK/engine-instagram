@@ -40,6 +40,8 @@ namespace Repository.Data
         [StringLength(32)]
         public string ResetKey { get; set; }
 
+        public DateTime? ResetKeyTime { get; set; }
+
         [Required]
         public DateTime Created { get; set; }
 
