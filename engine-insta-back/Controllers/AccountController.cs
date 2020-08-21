@@ -39,5 +39,12 @@ namespace engine_insta_back.Controllers
         {
             _accountsService.ActivateAccount(userKey, Localization.Base_EnLanguageSign);
         }
+
+        [HttpPatch]
+        [Route("forgotpassword")]
+        public void ForgotPassword([FromBody]string email)
+        {
+            _accountsService.ForgotPassword(email, Localization.Base_EnLanguageSign);
+        }
     }
 }

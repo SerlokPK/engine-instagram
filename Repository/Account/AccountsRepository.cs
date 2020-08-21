@@ -161,5 +161,41 @@ namespace Repository.Account
                 return new RegisteredUser { UserId = userId, UserKey = newUser.UserKey };
             }
         }
+
+        public UserReset ResetPassword(string password, string resetKey)
+        {
+            using (var context = GetContext())
+            {
+                var saltPassword = PasswordHelper.GenerateRandomPassword(Common.Constants.Account.UniqueKeyLength, false, false);
+                var shaPassword = HashHelper.Hash(saltPassword + password);
+
+                var user = context.Users.SingleOrDefault(x => x.ResetKey == resetKey && (x.Status == UserStatus.Active.Status || x.Status == UserStatus.Pending.Status));
+
+                if (user != null && IsResetKeyValid(user.ResetKeyTime))
+                {
+                    var resetKeyTime = user.ResetKeyTime;
+
+                    user.PasswordSalt = saltPassword;
+                    user.Password = shaPassword;
+                    user.ResetKey = null;
+                    user.ResetKeyTime = null;
+                    context.SaveChanges();
+
+                    return new UserReset
+                    {
+                        Username = user.Username,
+                        Email = user.Email,
+                        ResetKeyTime = resetKeyTime
+                    };
+                }
+
+                return null;
+            }
+        }
+
+        private bool IsResetKeyValid(DateTime? resetKeyTime)
+        {
+            return resetKeyTime != null && DateTime.Now < resetKeyTime;
+        }
     }
 }
