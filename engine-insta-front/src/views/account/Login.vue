@@ -1,11 +1,16 @@
 <template>
   <div>
+    <div>
+      <h3 class="pb-5">
+        {{ $t('login.title') }}
+      </h3>
+    </div>
     <b-form
       @submit.prevent="onSubmit"
     >
       <b-form-group
         :label="$t('login.emailLabel')"
-        label-for="input-1"
+        label-for="email"
       >
         <b-form-input
           id="email"
@@ -21,7 +26,7 @@
 
       <b-form-group
         :label="$t('login.passwordLabel')"
-        label-for="input-2"
+        label-for="password"
       >
         <b-form-input
           id="password"
@@ -35,12 +40,17 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button
-        type="submit"
-        variant="primary"
-      >
-        Submit
-      </b-button>
+      <div class="d-flex justify-content-between align-items-center">
+        <b-button
+          type="submit"
+          variant="primary"
+        >
+          {{ $t('login.submitButton') }}
+        </b-button>
+        <router-link to="/account/register">
+          {{ $t('login.redirectButton') }}
+        </router-link>
+      </div>
     </b-form>
   </div>
 </template>
@@ -104,7 +114,7 @@ export default {
             this.$router.push('/');
           }
         } catch(error) {
-          // 
+          //
         }
       },
     }

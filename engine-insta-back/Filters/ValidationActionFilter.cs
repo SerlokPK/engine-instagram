@@ -11,8 +11,7 @@ namespace engine_insta_back.Filters
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             var modelState = actionContext.ModelState;
-            var controller = actionContext.ControllerContext?.Controller as BaseController;
-            if (controller != null && !modelState.IsValid)
+            if (!modelState.IsValid)
             {
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, modelState);
             }

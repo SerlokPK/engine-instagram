@@ -3,6 +3,7 @@ using Common.Helpers;
 using engine_insta_back.Helpers;
 using Microsoft.IdentityModel.Tokens;
 using Models.Account;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,6 +17,7 @@ namespace engine_insta_back.Filters
 {
     public class JwtAuthenticationFilter : Attribute, IAuthenticationFilter
     {
+        private static readonly Logger m_Logger = LogManager.GetCurrentClassLogger();
         public bool AllowMultiple => false;
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
@@ -114,9 +116,10 @@ namespace engine_insta_back.Filters
 
                 return principal;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // TODO logger
+                m_Logger.Error(e, e.Message);
+
                 return null;
             }
         }

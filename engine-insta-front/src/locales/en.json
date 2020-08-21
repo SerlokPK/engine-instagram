@@ -2,12 +2,39 @@
   "login": {
     "emailLabel": "Email address:",
     "emailPlaceholder": "Enter email",
-    "passwordLabel": "Your password:",
+    "passwordLabel": "Password:",
     "passwordPlaceholder": "Enter password",
     "passwordRequired": "Password is required",
     "passwordLength": "Password must have 8 characters",
     "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
     "emailRequired": "Email is required",
-    "emailFormat": "Email doesn't have valid format"
+    "emailFormat": "Email doesn't have valid format",
+    "successfulLogin": "You've been successfully logged in",
+    "submitButton": "Submit",
+    "title": "Welcome, please log in",
+    "redirectButton": "Don't have an account?"
+  },
+  "register": {
+    "title": "Welcome, please register",
+    "submitButton": "Submit",
+    "emailLabel": "Email address:",
+    "emailPlaceholder": "Enter email",
+    "usernameLabel": "Username:",
+    "usernamePlaceholder": "Enter username",
+    "passwordLabel": "Password:",
+    "passwordPlaceholder": "Enter password",
+    "confirmPasswordLabel": "Confirm password:",
+    "confirmPasswordPlaceholder": "Enter confirm password",
+    "passwordRequired": "Password is required",
+    "passwordLength": "Password must have 8 characters",
+    "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
+    "confirmPasswordRequired": "Confirm password is required",
+    "confirmPasswordNotSame": "Confirm password must be same as password",
+    "emailRequired": "Email is required",
+    "emailFormat": "Email doesn't have valid format",
+    "usernameRequired": "Username is required",
+    "usernameNoWhitespace": "Username can't contain whitespace",
+    "successfulRegistration": "You've been successfully registered",
+    "redirectButton": "Already registered?"
   }
 }

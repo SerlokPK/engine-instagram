@@ -4,7 +4,6 @@ using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
-using Models.Account.ApiModels;
 using Models.Users;
 
 namespace Service.Account
@@ -12,9 +11,11 @@ namespace Service.Account
     public class AccountsService : IAccountsService
     {
         private readonly IAccountsRepository _accountsRepository;
-        public AccountsService(IAccountsRepository accountsRepository, IAdminsRepository adminsRepository)
+        private readonly IMailService _mailService;
+        public AccountsService(IAccountsRepository accountsRepository, IMailService mailService)
         {
             _accountsRepository = accountsRepository;
+            _mailService = mailService;
         }
         public UserAuth Login(string email, string password)
         {
@@ -26,6 +27,22 @@ namespace Service.Account
                 return user;
             }
             throw new UnauthorizedException(Localization.Login_WrongCredentials);
+        }
+
+        public void Register(string email, string username, string password, string confirmPassword)
+        {
+            var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
+            if (registeredUser != null)
+            {
+                if (string.IsNullOrEmpty(registeredUser.ErrorMessage))
+                {
+                    var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
+                    _mailService.RegisteredUserSendMail(Localization.Register_MailSubject, Localization.Base_EnLanguageSign, email, username, link);
+
+                    return;
+                }
+                throw new ConflictException(registeredUser.ErrorMessage);
+            }
         }
     }
 }

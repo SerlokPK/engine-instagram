@@ -45,6 +45,7 @@
     <Compile Include="Repositories\IAccountsRepository.cs" />
     <Compile Include="Repositories\IAdminsRepository.cs" />
     <Compile Include="Services\IAccountsService.cs" />
+    <Compile Include="Services\IMailService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

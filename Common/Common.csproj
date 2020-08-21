@@ -40,12 +40,19 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.7.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,7 +66,9 @@
     <Compile Include="Constants\Localization.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
+    <Compile Include="Exceptions\ConflictException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\JwtHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />

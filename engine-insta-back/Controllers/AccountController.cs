@@ -24,5 +24,12 @@ namespace engine_insta_back.Controllers
 
             return Ok(userAuth);
         }
+
+        [HttpPost]
+        [Route("register")]
+        public void Register(RegistrationModel model)
+        {
+            _accountsService.Register(model.Email, model.Username, model.Password, model.ConfirmPassword);
+        }
     }
 }

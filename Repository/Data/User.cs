@@ -33,6 +33,14 @@ namespace Repository.Data
         public string Status { get; set; }
 
         [Required]
+        [StringLength(32)]
+        public string UserKey { get; set; }
+
+        [Required]
+        [StringLength(32)]
+        public string ResetKey { get; set; }
+
+        [Required]
         public DateTime Created { get; set; }
 
         public DateTime? LastLogin { get; set; }

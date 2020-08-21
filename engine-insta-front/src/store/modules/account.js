@@ -28,10 +28,22 @@ export const actions = {
                 context.commit("SET_TOKEN", response.data.login.token);
                 localStorage.setItem('user', JSON.stringify(response.data.login.user));
                 context.commit("SET_USER", response.data.login.user);
+
+                context.dispatch('successNotification', "login.successfulLogin");
             }
         }catch (error) {
-            // TODO: set ntf
+            console.log(error);
+            context.dispatch('errorNotification', error.data.errorMessage);
+            
             return Promise.reject();
+        }
+    },
+    async register(context, payload) {
+        try {
+            await AccountApi.register(payload);
+            context.dispatch('successNotification', "register.successfulRegistration");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
     logOut() {

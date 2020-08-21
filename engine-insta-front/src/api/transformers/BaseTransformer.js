@@ -1,3 +1,5 @@
+import AXIOS_CONSTANTS from '../../constants/axios';
+
 export class BaseTransformer {
     constructor() {
       this.transform = this.transform.bind(this);
@@ -6,14 +8,18 @@ export class BaseTransformer {
     }
   
     transform(payload) {
-      const data = payload;
+      const { errorMessage, statusCode } = payload;
+
+      if (statusCode && statusCode >= AXIOS_CONSTANTS.BAD_REQUEST_STATUS_CODE) {
+        return { errorMessage, statusCode };
+      }
       let result = {};
   
-      if (data) {
-        if ((Array.isArray(data) || data.length)) {
-          result = this.transformMultiple(data);
+      if (payload) {
+        if ((Array.isArray(payload) || payload.length)) {
+          result = this.transformMultiple(payload);
         } else {
-          result = this.transformSingle(data);
+          result = this.transformSingle(payload);
         }
       }
   
