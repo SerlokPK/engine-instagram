@@ -2,6 +2,7 @@
 using Common.Helpers;
 using Interface.Repositories;
 using Models.Account;
+using Models.User;
 using Models.Users;
 using System;
 using System.Linq;
@@ -10,6 +11,27 @@ namespace Repository.Account
 {
     public class AccountsRepository : BaseRepository, IAccountsRepository
     {
+        public UserActivated ActivateAccount(string userKey)
+        {
+            using (var context = GetContext())
+            {
+                var user = context.Users.SingleOrDefault(u => u.UserKey == userKey && u.Status == UserStatus.Pending.Status);
+                if (user != null)
+                {
+                    user.Status = UserStatus.Active.Status;
+                    context.SaveChanges();
+
+                    return new UserActivated
+                    {
+                        Email = user.Email,
+                        Username = user.Username
+                    };
+                }
+
+                return null;
+            }
+        }
+
         public UserAuth Login(string email, string password)
         {
             using (var context = GetContext())
