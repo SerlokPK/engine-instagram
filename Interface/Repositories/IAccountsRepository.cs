@@ -1,6 +1,4 @@
 ﻿using Models.Account;
-using Models.User;
-using Models.Users;
 
 namespace Interface.Repositories
 {

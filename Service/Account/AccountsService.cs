@@ -4,6 +4,7 @@ using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
+using Models.Account;
 using Models.Users;
 
 namespace Service.Account

@@ -2,7 +2,6 @@
 using Common.Helpers;
 using Interface.Repositories;
 using Models.Account;
-using Models.User;
 using Models.Users;
 using System;
 using System.Linq;
