@@ -41,6 +41,15 @@ namespace Service.Mail
             return SendEmailWithAttachment(languageSign, email, Localization.Activate_AccountActivated, true, body, null, null, null);
         }
 
+        public bool ResetPasswordSendMail(string languageSign, string email, string username, string link)
+        {
+            var body = CreateEmailBody(languageSign, "AccountActivated");
+            body = body.Replace("{name}", username);
+            body = body.Replace("{link}", link);
+
+            return SendEmailWithAttachment(languageSign, email, Localization.ForgotPassword_SuccessMailSubject, true, body, null, null, null);
+        }
+
         private string CreateEmailBody(string languageSign, string template)
         {
             if (!string.IsNullOrEmpty(languageSign) && !string.IsNullOrEmpty(template))
