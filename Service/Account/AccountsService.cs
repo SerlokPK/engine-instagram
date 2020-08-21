@@ -27,7 +27,10 @@ namespace Service.Account
                 {
                     var link = $"{AppSettings.WebsiteUrl}/account/login";
                     _mailService.AccountActivatedSendMail(Localization.Base_EnLanguageSign, user.Email, user.Username, link);
+
+                    return;
                 }
+                throw new UnauthorizedException(Localization.Activate_InvalidLink);
             }
         }
 

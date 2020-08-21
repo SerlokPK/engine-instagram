@@ -11,6 +11,7 @@
         public const string Register_UsernameTaken = "Username taken";
         public const string Register_MailSubject = "Successful registration";
         public const string Activate_AccountActivated = "Account activated";
+        public const string Activate_InvalidLink = "Link has expired";
 
         #endregion
     }

@@ -34,7 +34,7 @@ namespace engine_insta_back.Controllers
 
         [HttpPatch]
         [Route("activate/{userKey}")]
-        public void Register([FromBody]string userKey)
+        public void ActivateAccount(string userKey)
         {
             _accountsService.ActivateAccount(userKey);
         }

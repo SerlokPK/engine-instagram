@@ -12,5 +12,8 @@ export default {
     },
     register(data) {
         return api.post('/account/register', data);
+    },
+    activateAccount(userKey) {
+        return api.patch(`/account/activate/${userKey}`);
     }
 };
