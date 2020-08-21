@@ -71,13 +71,17 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button
-        class="mb-2"
-        type="submit"
-        variant="primary"
-      >
-        {{ $t('register.submitButton') }}
-      </b-button>
+      <div class="d-flex justify-content-between align-items-center">
+        <b-button
+          type="submit"
+          variant="primary"
+        >
+          {{ $t('register.submitButton') }}
+        </b-button>
+        <router-link to="/account/login">
+          {{ $t('register.redirectButton') }}
+        </router-link>
+      </div>
     </b-form>
   </div>
 </template>
@@ -161,7 +165,7 @@ mixins: [validationMixin],
           this.$v.form.$touch();
           if (!this.$v.form.$anyError) {
             await this.register(this.form);
-            this.$router.push('/login');
+            this.$router.push('/account/login');
           }
         } catch(error) {
           // 

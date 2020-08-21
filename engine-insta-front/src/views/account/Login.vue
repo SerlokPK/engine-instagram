@@ -40,13 +40,17 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button
-        class="mt-2"
-        type="submit"
-        variant="primary"
-      >
-        {{ $t('login.submitButton') }}
-      </b-button>
+      <div class="d-flex justify-content-between align-items-center">
+        <b-button
+          type="submit"
+          variant="primary"
+        >
+          {{ $t('login.submitButton') }}
+        </b-button>
+        <router-link to="/account/register">
+          {{ $t('login.redirectButton') }}
+        </router-link>
+      </div>
     </b-form>
   </div>
 </template>
@@ -110,7 +114,7 @@ export default {
             this.$router.push('/');
           }
         } catch(error) {
-          // 
+          //
         }
       },
     }

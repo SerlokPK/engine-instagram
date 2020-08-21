@@ -32,19 +32,18 @@ export const actions = {
                 context.dispatch('successNotification', "login.successfulLogin");
             }
         }catch (error) {
-            context.dispatch('errorNotification', error.data.Message);
+            console.log(error);
+            context.dispatch('errorNotification', error.data.errorMessage);
             
             return Promise.reject();
         }
     },
     async register(context, payload) {
         try {
-            await AccountApi.logIn(payload);
+            await AccountApi.register(payload);
             context.dispatch('successNotification', "register.successfulRegistration");
         }catch (error) {
-            context.dispatch('errorNotification', error.data.Message);
-        
-            return Promise.reject();
+            context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
     logOut() {

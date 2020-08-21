@@ -34,14 +34,13 @@ namespace Service.Account
             var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
             if (registeredUser != null)
             {
-                var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
-                _mailService.RegisteredUserSendMail(Localization.Register_MailSubject, Localization.Base_EnLanguageSign, email, username, link);
+                if (string.IsNullOrEmpty(registeredUser.ErrorMessage))
+                {
+                    var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
+                    _mailService.RegisteredUserSendMail(Localization.Register_MailSubject, Localization.Base_EnLanguageSign, email, username, link);
 
-                return;
-            }
-
-            if (registeredUser != null && !string.IsNullOrEmpty(registeredUser.ErrorMessage))
-            {
+                    return;
+                }
                 throw new ConflictException(registeredUser.ErrorMessage);
             }
         }

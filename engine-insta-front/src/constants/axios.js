@@ -1,0 +1,5 @@
+const BAD_REQUEST_STATUS_CODE = 400;
+
+export default {
+    BAD_REQUEST_STATUS_CODE
+};

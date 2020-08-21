@@ -2,7 +2,7 @@ import User from "../users/User";
 
 export default class Login {
   constructor(item) {
-    this.user = new User(item.User);
+    this.user = item.User ? new User(item.User) : null;
     this.token = item.Token;
   }
 }

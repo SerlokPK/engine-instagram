@@ -25,10 +25,9 @@ namespace engine_insta_back.Helpers
                     statusCode = be.StatusCode;
                 }
                 m_Logger.Error(exception, context.Request.RequestUri.AbsoluteUri);
-                var response = context.Request.CreateResponse(statusCode, new { errorMessage });
+                var response = context.Request.CreateResponse(statusCode, new { errorMessage, statusCode });
                 context.Result = new ResponseMessageResult(response);
             }
-
 
             return Task.CompletedTask;
         }
