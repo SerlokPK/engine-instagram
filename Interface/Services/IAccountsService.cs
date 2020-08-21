@@ -1,4 +1,4 @@
-﻿using Models.Users;
+﻿using Models.Account;
 
 namespace Interface.Services
 {
@@ -6,5 +6,6 @@ namespace Interface.Services
     {
         UserAuth Login(string email, string password);
         void Register(string email, string username, string password, string confirmPassword);
+        void ActivateAccount(string userKey);
     }
 }

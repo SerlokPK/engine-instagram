@@ -52,7 +52,8 @@
     <Compile Include="ModelAttributes\Regex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\User.cs" />
-    <Compile Include="User\UserAuth.cs" />
+    <Compile Include="Account\UserActivated.cs" />
+    <Compile Include="Account\UserAuth.cs" />
     <Compile Include="User\UserStatus.cs" />
   </ItemGroup>
   <ItemGroup />

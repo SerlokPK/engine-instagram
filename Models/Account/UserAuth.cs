@@ -1,4 +1,6 @@
-﻿namespace Models.Users
+﻿using Models.Users;
+
+namespace Models.Account
 {
     public class UserAuth
     {

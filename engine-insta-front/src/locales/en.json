@@ -36,5 +36,8 @@
     "usernameNoWhitespace": "Username can't contain whitespace",
     "successfulRegistration": "You've been successfully registered",
     "redirectButton": "Already registered?"
+  },
+  "activateAccount": {
+    "successfulActivation": "Account successfully activated"
   }
 }

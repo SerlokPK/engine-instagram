@@ -4,6 +4,7 @@ using Common.Exceptions;
 using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
+using Models.Account;
 using Models.Users;
 
 namespace Service.Account
@@ -17,6 +18,23 @@ namespace Service.Account
             _accountsRepository = accountsRepository;
             _mailService = mailService;
         }
+
+        public void ActivateAccount(string userKey)
+        {
+            if (!string.IsNullOrEmpty(userKey))
+            {
+                var user = _accountsRepository.ActivateAccount(userKey);
+                if (user != null)
+                {
+                    var link = $"{AppSettings.WebsiteUrl}/account/login";
+                    _mailService.AccountActivatedSendMail(Localization.Base_EnLanguageSign, user.Email, user.Username, link);
+
+                    return;
+                }
+                throw new UnauthorizedException(Localization.Activate_InvalidLink);
+            }
+        }
+
         public UserAuth Login(string email, string password)
         {
             var user = _accountsRepository.Login(email, password);
@@ -36,8 +54,8 @@ namespace Service.Account
             {
                 if (string.IsNullOrEmpty(registeredUser.ErrorMessage))
                 {
-                    var link = $"{AppSettings.WebsiteUrl}/account/activate?userKey={registeredUser.UserKey}";
-                    _mailService.RegisteredUserSendMail(Localization.Register_MailSubject, Localization.Base_EnLanguageSign, email, username, link);
+                    var link = $"{AppSettings.WebsiteUrl}/account/activate/{registeredUser.UserKey}";
+                    _mailService.RegisteredUserSendMail(Localization.Base_EnLanguageSign, email, username, link);
 
                     return;
                 }

@@ -6,6 +6,7 @@ import MemberLayout from '../layouts/MemberLayout';
 
 import LoginPage from '../views/account/Login';
 import RegisterPage from '../views/account/Register';
+import ActivatePage from '../views/account/ActivateAccount';
 import TestPage from '../views/member/Test';
 
 Vue.use(Router);
@@ -24,6 +25,11 @@ const routes = [
           path: 'register',
           name: 'Register',
           component: RegisterPage
+        },
+        {
+          path: 'activate/:userKey',
+          name: 'Activate account',
+          component: ActivatePage
         }
       ]
     },

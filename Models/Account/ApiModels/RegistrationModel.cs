@@ -10,6 +10,7 @@ namespace Models.Account.ApiModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = Localization.Register_UsernameRequired)]
+        [RegularExpression(Regex.NoWthispace, ErrorMessage = Localization.Register_NoWhitespace)]
         [StringLength(50, ErrorMessage = Localization.Register_LongUsername)]
         public string Username { get; set; }
 

@@ -44,6 +44,16 @@ export const actions = {
             context.dispatch('successNotification', "register.successfulRegistration");
         }catch (error) {
             context.dispatch('errorNotification', error.data.errorMessage);
+
+            return Promise.reject();
+        }
+    },
+    async activateAccount(context, payload) {
+        try {
+            await AccountApi.activateAccount(payload);
+            context.dispatch('successNotification', "activateAccount.successfulActivation");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
     logOut() {

@@ -31,5 +31,12 @@ namespace engine_insta_back.Controllers
         {
             _accountsService.Register(model.Email, model.Username, model.Password, model.ConfirmPassword);
         }
+
+        [HttpPatch]
+        [Route("activate/{userKey}")]
+        public void ActivateAccount(string userKey)
+        {
+            _accountsService.ActivateAccount(userKey);
+        }
     }
 }

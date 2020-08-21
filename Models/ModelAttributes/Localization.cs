@@ -8,9 +8,11 @@
         public const string Login_EmailFormatNotValid = "Email format not valid";
         public const string Login_LongPassword = "Password can't be over 50 characters";
         public const string Login_PasswordRequired = "Password required";
+
         public const string Register_UsernameRequired = "Username required";
         public const string Register_LongUsername = "Username can't be over 50 characters";
         public const string Register_PasswordsArentSame = "Password and confirm password must be identical";
+        public const string Register_NoWhitespace = "Username can't have whitespace";
 
         #endregion
 

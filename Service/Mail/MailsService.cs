@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Constants;
 using Interface.Services;
 using NLog;
 using System;
@@ -22,12 +23,22 @@ namespace Service.Mail
             }
         }
 
-        public bool RegisteredUserSendMail(string mailSubject, string languageSign, string email, string username, string link)
+        public bool RegisteredUserSendMail(string languageSign, string email, string username, string link)
         {
             var body = CreateEmailBody(languageSign, "UserRegistered");
             body = body.Replace("{name}", username);
             body = body.Replace("{link}", link);
-            return SendEmailWithAttachment(languageSign, email, mailSubject, true, body, null, null, null);
+
+            return SendEmailWithAttachment(languageSign, email, Localization.Register_MailSubject, true, body, null, null, null);
+        }
+
+        public bool AccountActivatedSendMail(string languageSign, string email, string username, string link)
+        {
+            var body = CreateEmailBody(languageSign, "AccountActivated");
+            body = body.Replace("{name}", username);
+            body = body.Replace("{link}", link);
+
+            return SendEmailWithAttachment(languageSign, email, Localization.Activate_AccountActivated, true, body, null, null, null);
         }
 
         private string CreateEmailBody(string languageSign, string template)
