@@ -9,7 +9,9 @@ import RegisterPage from '../views/account/Register';
 import ActivatePage from '../views/account/ActivateAccount';
 import ForgotPasswordPage from '../views/account/ForgotPassword';
 import ResetPasswordPage from '../views/account/ResetPassword';
+
 import HomePage from '../views/member/Home';
+import ProfilePage from '../views/member/Profile';
 
 Vue.use(Router);
 
@@ -56,6 +58,11 @@ const routes = [
           path: '/',
           name: 'Home',
           component: HomePage
+        },
+        {
+          path: '/member/profile',
+          name: 'Profile',
+          component: ProfilePage
         }
       ]
     }

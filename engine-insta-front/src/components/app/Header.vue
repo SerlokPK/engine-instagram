@@ -3,7 +3,7 @@
     class="header-wrapper"
   >
     <div class="container-xl">
-      <div class="row align-items-center">
+      <div class="row align-items-center justify-content-between">
         <router-link to="/">
           <figure>
             <img
@@ -39,7 +39,8 @@
               <div class="p-3 text-center bg-primary">
                 <img
                   class="img-avatar img-avatar48 img-avatar-thumb"
-                  src="img/avatars/avatar10.jpg"
+                  src="@/assets/images/itenginee.jpg"
+                  width="50px"
                   alt="Avatar"
                 >
               </div>
@@ -62,6 +63,7 @@
 
 <script>
 import DropdownGroup from '../ui/add-ons/dropdown-group';
+import { mapActions } from 'vuex';
 
 export default {
     components: {
@@ -69,8 +71,12 @@ export default {
     },
     data() {
         return {
-            dropdownGroups: [
-                {
+            dropdownGroups: []
+        };
+    },
+    created() {
+        this.dropdownGroups = [
+            {
                     title: 'Pages',
                     items: [
                         {
@@ -92,12 +98,20 @@ export default {
                         },
                         {
                             text: 'Log out',
-                            route: '/'
+                            action: this.logOutAction
                         },
                     ]
                 }
-            ]
-        };
+        ];
+    },
+    methods: {
+      ...mapActions({
+        logOut: 'logOut'
+      }),
+      logOutAction() {
+        this.logOut();
+        this.$router.push('/account/login');
+      }
     }
 };
 </script>

@@ -75,8 +75,10 @@ export const actions = {
             return Promise.reject();
         }
     },
-    logOut() {
+    logOut(context) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        context.commit('SET_TOKEN', null);
+        context.commit('SET_USER', null);
     }
 };
