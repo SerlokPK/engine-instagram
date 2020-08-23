@@ -48,6 +48,22 @@
     "submitButton": "Submit",
     "registerButton": "Don't have an account?",
     "title": "Forgot password",
-    "resetPasswordInitiated": "Success! Check mail for link to reset password"
+    "resetPasswordInitiated": "Success! Check mail for link to reset password",
+    "emailRequired": "Email is required",
+    "emailFormat": "Email doesn't have valid format"
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "passwordLabel": "Password:",
+    "passwordPlaceholder": "Enter password",
+    "confirmPasswordLabel": "Confirm password:",
+    "confirmPasswordPlaceholder": "Enter confirm password",
+    "submitButton": "Submit",
+    "passwordRequired": "Password is required",
+    "passwordLength": "Password must have 8 characters",
+    "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
+    "confirmPasswordRequired": "Confirm password is required",
+    "confirmPasswordNotSame": "Confirm password must be same as password",
+    "resetPasswordSuccess": "password successfully changed"
   }
 }

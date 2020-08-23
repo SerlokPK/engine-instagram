@@ -66,6 +66,15 @@ export default {
         }
       }
     },
+    computed: {
+      getEmailValidationMessage() {
+        if(!this.$v.form.email.required) {
+          return "forgotPassword.emailRequired";
+        } else {
+          return "forgotPassword.emailFormat";
+        }
+      }
+    },
     methods: {
       ...mapActions({
         forgotPassword: "forgotPassword"

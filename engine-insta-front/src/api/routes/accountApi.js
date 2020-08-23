@@ -18,5 +18,8 @@ export default {
     },
     forgotPassword(payload) {
         return api.patch(`/account/forgotpassword`, payload);
+    },
+    resetPassword(payload) {
+        return api.patch(`/account/resetpassword`, payload);
     }
 };

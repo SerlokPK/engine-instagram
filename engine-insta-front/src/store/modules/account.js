@@ -64,6 +64,16 @@ export const actions = {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
+    async resetPassword(context, payload) {
+        try {
+            await AccountApi.resetPassword(payload);
+            context.dispatch('successNotification', "forgotPassword.resetPasswordSuccess");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+
+            return Promise.reject();
+        }
+    },
     logOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');

@@ -8,6 +8,7 @@ import LoginPage from '../views/account/Login';
 import RegisterPage from '../views/account/Register';
 import ActivatePage from '../views/account/ActivateAccount';
 import ForgotPasswordPage from '../views/account/ForgotPassword';
+import ResetPasswordPage from '../views/account/ResetPassword';
 import TestPage from '../views/member/Test';
 
 Vue.use(Router);
@@ -36,6 +37,11 @@ const routes = [
           path: 'forgot-password',
           name: 'Forgot password',
           component: ForgotPasswordPage
+        },
+        {
+          path: 'reset-password/:resetKey',
+          name: 'Reset password',
+          component: ResetPasswordPage
         }
       ]
     },
