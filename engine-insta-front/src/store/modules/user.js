@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const mutations = {
     SET_USER(state, payload) {
-        state.user = payload.user;
+        state.user = payload;
     }
 };
 

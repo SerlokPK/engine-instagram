@@ -15,46 +15,12 @@
           </figure>
         </router-link>
         <div
-          class="d-flex align-items-center"
+          class="d-flex align-items-center w-75 justify-content-between"
         >
-          <div>
-            SEARCH
+          <div class="content w-50">
+            <autocomplete :search="search" />
           </div>
-          <b-dropdown
-            size="lg"
-            variant="dual"
-            class="header-wrapper__dropdown"
-            menu-class="p-0 border-0 font-size-lg"
-            right
-            no-caret
-          >
-            <template #button-content>
-              <span class="d-none d-sm-inline-block ml-1">Adam</span>
-              <font-awesome-icon
-                class="ml-1 pt-1"
-                icon="angle-down"
-              />
-            </template>
-            <li class="header-wrapper__dropdown-items">
-              <div class="p-3 text-center bg-primary">
-                <img
-                  class="img-avatar img-avatar48 img-avatar-thumb"
-                  src="@/assets/images/itenginee.jpg"
-                  width="50px"
-                  alt="Avatar"
-                >
-              </div>
-              <div class="p-2">
-                <dropdown-group
-                  v-for="(group, index) in dropdownGroups"
-                  :key="group.title"
-                  :title="group.title"
-                  :items="group.items"
-                  :add-separator="!index"
-                />
-              </div>
-            </li>
-          </b-dropdown>
+          <dropdown-with-actions :groups="dropdownGroups" />
         </div>
       </div>
     </div>
@@ -62,21 +28,19 @@
 </template>
 
 <script>
-import DropdownGroup from '../ui/add-ons/dropdown-group';
 import { mapActions } from 'vuex';
+import DropdownWithActions from '../ui/DropdownWithActions';
+import Autocomplete from '@trevoreyre/autocomplete-vue';
 
 export default {
     components: {
-        DropdownGroup
+        DropdownWithActions,
+        Autocomplete
     },
     data() {
         return {
-            dropdownGroups: []
-        };
-    },
-    created() {
-        this.dropdownGroups = [
-            {
+            dropdownGroups: [
+                {
                     title: 'Pages',
                     items: [
                         {
@@ -102,7 +66,8 @@ export default {
                         },
                     ]
                 }
-        ];
+            ]
+        };
     },
     methods: {
       ...mapActions({
@@ -111,6 +76,9 @@ export default {
       logOutAction() {
         this.logOut();
         this.$router.push('/account/login');
+      },
+      search() {
+          return ['prvi', 'drugi', 'treci'];
       }
     }
 };

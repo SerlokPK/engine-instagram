@@ -7,6 +7,7 @@ import i18n from './plugins/i18n';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import '@trevoreyre/autocomplete-vue/dist/style.css';
 
 import { storeInitialInfo } from './router/middlewares/initialization';
 import { library } from '@fortawesome/fontawesome-svg-core';
