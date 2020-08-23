@@ -56,6 +56,26 @@ export const actions = {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
+    async forgotPassword(context, payload) {
+        try {
+            await AccountApi.forgotPassword(payload);
+            context.dispatch('successNotification', "forgotPassword.resetPasswordInitiated");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+
+            return Promise.reject();
+        }
+    },
+    async resetPassword(context, payload) {
+        try {
+            await AccountApi.resetPassword(payload);
+            context.dispatch('successNotification', "resetPassword.resetPasswordSuccess");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+
+            return Promise.reject();
+        }
+    },
     logOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');

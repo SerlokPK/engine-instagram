@@ -41,6 +41,25 @@ namespace Service.Mail
             return SendEmailWithAttachment(languageSign, email, Localization.Activate_AccountActivated, true, body, null, null, null);
         }
 
+        public bool ResetPasswordSendMail(string languageSign, string email, string username, string link)
+        {
+            var body = CreateEmailBody(languageSign, "ResetPassword");
+            body = body.Replace("{name}", username);
+            body = body.Replace("{link}", link);
+
+            return SendEmailWithAttachment(languageSign, email, Localization.ForgotPassword_SuccessMailSubject, true, body, null, null, null);
+        }
+
+        public bool ResetPasswordDoneSendMail(string languageSign, string email, string username, string link)
+        {
+            var body = CreateEmailBody(languageSign, "ResetPasswordDone");
+            body = body.Replace("{email}", email);
+            body = body.Replace("{name}", username);
+            body = body.Replace("{link}", link);
+
+            return SendEmailWithAttachment(languageSign, email, Localization.ResetPassword_SuccessMailSubject, true, body, null, null, null);
+        }
+
         private string CreateEmailBody(string languageSign, string template)
         {
             if (!string.IsNullOrEmpty(languageSign) && !string.IsNullOrEmpty(template))
@@ -98,6 +117,7 @@ namespace Service.Mail
             if (string.IsNullOrEmpty(body))
             {
                 m_Logger.Error("SendEmailWithAttacment - No email body.");
+
                 return false;
             }
             var layout = GetMailTemplate(languageSign);
@@ -125,10 +145,12 @@ namespace Service.Mail
             if (!string.IsNullOrEmpty(mail.From) && !string.IsNullOrEmpty(mail.Host) && !string.IsNullOrEmpty(mail.Username) && !string.IsNullOrEmpty(mail.Pass))
             {
                 SendEmailWithAttachment(mail);
+
                 return true;
             }
 
             m_Logger.Warn("Mail not configured.");
+
             return false;
         }
 
@@ -145,10 +167,12 @@ namespace Service.Mail
                 MailAddress fromAddress = new MailAddress(mail.From, mail.FromName);
                 MailAddress toAddress = new MailAddress(mail.To);
 
-                var email = new MailMessage(fromAddress, toAddress);
-                email.Subject = mail.Subject;
-                email.Body = mail.Body;
-                email.IsBodyHtml = mail.IsBodyHtml;
+                var email = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = mail.Subject,
+                    Body = mail.Body,
+                    IsBodyHtml = mail.IsBodyHtml
+                };
                 if (!string.IsNullOrEmpty(mail.ReplayTo))
                 {
                     email.ReplyToList.Add(mail.ReplayTo);

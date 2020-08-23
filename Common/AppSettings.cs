@@ -22,6 +22,7 @@ namespace Common
         public static string EmailSettingsPassword => Get<string>(nameof(EmailSettingsPassword));
         public static int EmailSettingsPort => Get<int>(nameof(EmailSettingsPort));
         public static bool EmailSettingsEnableSsl => Get<bool>(nameof(EmailSettingsEnableSsl));
+        public static int ResetKeyDurationInMinutes => Get<int>(nameof(ResetKeyDurationInMinutes));
 
         public static void SetLocalPath(string localPath)
         {

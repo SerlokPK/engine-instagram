@@ -19,7 +19,7 @@ namespace Service.Account
             _mailService = mailService;
         }
 
-        public void ActivateAccount(string userKey)
+        public void ActivateAccount(string userKey, string languageSign)
         {
             if (!string.IsNullOrEmpty(userKey))
             {
@@ -27,11 +27,21 @@ namespace Service.Account
                 if (user != null)
                 {
                     var link = $"{AppSettings.WebsiteUrl}/account/login";
-                    _mailService.AccountActivatedSendMail(Localization.Base_EnLanguageSign, user.Email, user.Username, link);
+                    _mailService.AccountActivatedSendMail(languageSign, user.Email, user.Username, link);
 
                     return;
                 }
                 throw new UnauthorizedException(Localization.Activate_InvalidLink);
+            }
+        }
+
+        public void ForgotPassword(string email, string languageSign)
+        {
+            var user = _accountsRepository.ForgotPassword(email);
+            if (user != null)
+            {
+                var link = $"{AppSettings.WebsiteUrl}/account/reset-password/{user.ResetKey}";
+                _mailService.ResetPasswordSendMail(languageSign, user.Email, user.Username, link);
             }
         }
 
@@ -47,7 +57,7 @@ namespace Service.Account
             throw new UnauthorizedException(Localization.Login_WrongCredentials);
         }
 
-        public void Register(string email, string username, string password, string confirmPassword)
+        public void Register(string email, string username, string password, string confirmPassword, string languageSign)
         {
             var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
             if (registeredUser != null)
@@ -55,11 +65,21 @@ namespace Service.Account
                 if (string.IsNullOrEmpty(registeredUser.ErrorMessage))
                 {
                     var link = $"{AppSettings.WebsiteUrl}/account/activate/{registeredUser.UserKey}";
-                    _mailService.RegisteredUserSendMail(Localization.Base_EnLanguageSign, email, username, link);
+                    _mailService.RegisteredUserSendMail(languageSign, email, username, link);
 
                     return;
                 }
                 throw new ConflictException(registeredUser.ErrorMessage);
+            }
+        }
+
+        public void ResetPassword(string password, string resetKey, string languageSign)
+        {
+            var user = _accountsRepository.ResetPassword(password, resetKey);
+            if (user != null)
+            {
+                var link = $"{AppSettings.WebsiteUrl}/account/login";
+                _mailService.ResetPasswordDoneSendMail(languageSign, user.Email, user.Username, link);
             }
         }
     }

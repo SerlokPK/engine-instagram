@@ -1,4 +1,5 @@
-﻿using Common.Constants;
+﻿using Common;
+using Common.Constants;
 using Common.Helpers;
 using Interface.Repositories;
 using Models.Account;
@@ -24,6 +25,36 @@ namespace Repository.Account
                     {
                         Email = user.Email,
                         Username = user.Username
+                    };
+                }
+
+                return null;
+            }
+        }
+
+        public UserReset ForgotPassword(string email)
+        {
+            using (var context = GetContext())
+            {
+                if (string.IsNullOrEmpty(email))
+                {
+                    return null;
+                }
+
+                var user = context.Users.SingleOrDefault(x => x.Email == email);
+
+                if (user != null)
+                {
+                    user.ResetKey = PasswordHelper.GenerateUniqueKey(Common.Constants.Account.UniqueKeyLength);
+                    user.ResetKeyTime = DateTime.Now.AddMinutes(AppSettings.ResetKeyDurationInMinutes);
+                    context.SaveChanges();
+
+                    return new UserReset()
+                    {
+                        Username = user.Username,
+                        Email = user.Email,
+                        ResetKey = user.ResetKey,
+                        ResetKeyTime = user.ResetKeyTime
                     };
                 }
 
@@ -107,7 +138,7 @@ namespace Repository.Account
                     return new RegisteredUser { ErrorMessage = Localization.Register_UsernameTaken };
                 }
 
-                var saltPassword = PasswordHelper.GenerateRandomPassword(32, false, false);
+                var saltPassword = PasswordHelper.GenerateRandomPassword(Common.Constants.Account.UniqueKeyLength, false, false);
                 var shaPassword = HashHelper.Hash(saltPassword + password);
                 var userId = context.Users.Any() ? context.Users.Max(x => x.UserId) + 1 : 1;
 
@@ -119,8 +150,7 @@ namespace Repository.Account
                     PasswordSalt = saltPassword,
                     Created = DateTime.Now,
                     Status = UserStatus.Pending.Status,
-                    UserKey = PasswordHelper.GenerateUniqueKey(32),
-                    ResetKey = PasswordHelper.GenerateUniqueKey(32),
+                    UserKey = PasswordHelper.GenerateUniqueKey(Common.Constants.Account.UniqueKeyLength),
                     Email = email,
                 };
 
@@ -129,6 +159,39 @@ namespace Repository.Account
 
                 return new RegisteredUser { UserId = userId, UserKey = newUser.UserKey };
             }
+        }
+
+        public UserReset ResetPassword(string password, string resetKey)
+        {
+            using (var context = GetContext())
+            {
+                var saltPassword = PasswordHelper.GenerateRandomPassword(Common.Constants.Account.UniqueKeyLength, false, false);
+                var shaPassword = HashHelper.Hash(saltPassword + password);
+
+                var user = context.Users.SingleOrDefault(x => x.ResetKey == resetKey && (x.Status == UserStatus.Active.Status || x.Status == UserStatus.Pending.Status));
+
+                if (user != null && IsResetKeyValid(user.ResetKeyTime))
+                {
+                    user.PasswordSalt = saltPassword;
+                    user.Password = shaPassword;
+                    user.ResetKey = null;
+                    user.ResetKeyTime = null;
+                    context.SaveChanges();
+
+                    return new UserReset
+                    {
+                        Username = user.Username,
+                        Email = user.Email
+                    };
+                }
+
+                return null;
+            }
+        }
+
+        private bool IsResetKeyValid(DateTime? resetKeyTime)
+        {
+            return resetKeyTime != null && DateTime.Now < resetKeyTime;
         }
     }
 }
