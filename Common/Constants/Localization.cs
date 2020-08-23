@@ -13,6 +13,7 @@
         public const string Activate_AccountActivated = "Account activated";
         public const string Activate_InvalidLink = "Link has expired";
         public const string ForgotPassword_SuccessMailSubject = "Forgot password initiated";
+        public const string ResetPassword_SuccessMailSubject = "Password reset succesffully";
 
         #endregion
     }

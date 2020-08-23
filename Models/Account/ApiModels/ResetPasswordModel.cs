@@ -3,16 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models.Account.ApiModels
 {
-    public class RegistrationModel
+    public class ResetPasswordModel
     {
-        [Required(ErrorMessage = Localization.Login_EmailRequired)]
-        [RegularExpression(Regex.Email, ErrorMessage = Localization.Login_EmailFormatNotValid)]
-        public string Email { get; set; }
-
-        [Required(ErrorMessage = Localization.Register_UsernameRequired)]
-        [RegularExpression(Regex.NoWthispace, ErrorMessage = Localization.Register_NoWhitespace)]
-        [StringLength(50, ErrorMessage = Localization.Register_LongUsername)]
-        public string Username { get; set; }
+        [Required(ErrorMessage = Localization.ResetPassword_ResetKeyRequired)]
+        public string ResetKey { get; set; }
 
         [Required(ErrorMessage = Localization.Login_PasswordRequired)]
         [RegularExpression(Regex.ValidPassword, ErrorMessage = Localization.Register_ValidPassword)]

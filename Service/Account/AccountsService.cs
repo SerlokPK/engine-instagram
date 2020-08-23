@@ -72,5 +72,15 @@ namespace Service.Account
                 throw new ConflictException(registeredUser.ErrorMessage);
             }
         }
+
+        public void ResetPassword(string password, string resetKey, string languageSign)
+        {
+            var user = _accountsRepository.ResetPassword(password, resetKey);
+            if (user != null)
+            {
+                var link = $"{AppSettings.WebsiteUrl}/account/login";
+                _mailService.ResetPasswordDoneSendMail(languageSign, user.Email, user.Username, link);
+            }
+        }
     }
 }

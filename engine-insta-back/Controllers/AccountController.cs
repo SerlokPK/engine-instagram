@@ -42,9 +42,16 @@ namespace engine_insta_back.Controllers
 
         [HttpPatch]
         [Route("forgotpassword")]
-        public void ForgotPassword([FromBody]string email)
+        public void ForgotPassword([FromBody] string email)
         {
             _accountsService.ForgotPassword(email, Localization.Base_EnLanguageSign);
+        }
+
+        [HttpPatch]
+        [Route("resetpassword")]
+        public void ResetPassword(ResetPasswordModel model)
+        {
+            _accountsService.ResetPassword(model.Password, model.ResetKey, Localization.Base_EnLanguageSign);
         }
     }
 }

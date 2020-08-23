@@ -13,6 +13,9 @@
         public const string Register_LongUsername = "Username can't be over 50 characters";
         public const string Register_PasswordsArentSame = "Password and confirm password must be identical";
         public const string Register_NoWhitespace = "Username can't have whitespace";
+        public const string Register_ValidPassword = "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character";
+
+        public const string ResetPassword_ResetKeyRequired = "Reset key is required";
 
         #endregion
 
