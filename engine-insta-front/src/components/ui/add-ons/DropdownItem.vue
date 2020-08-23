@@ -4,14 +4,14 @@
     class="dropdown-item bg-white text-dark router"
     :to="item.route"
   >
-    <span>{{ item.text }}</span>
+    <span>{{ $t(item.text) }}</span>
   </router-link>
   <div
     v-else
     class="dropdown-item bg-white text-dark router"
     @click="item.action"
   >
-    <span>{{ item.text }}</span>
+    <span>{{ $t(item.text) }}</span>
   </div>
 </template>
 

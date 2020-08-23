@@ -18,7 +18,10 @@
           class="d-flex align-items-center w-75 justify-content-between"
         >
           <div class="content w-50">
-            <autocomplete :search="search" />
+            <autocomplete
+              :search="search"
+              :placeholder="$t('header.searchPlaceholder')"
+            />
           </div>
           <dropdown-with-actions :groups="dropdownGroups" />
         </div>
@@ -41,27 +44,27 @@ export default {
         return {
             dropdownGroups: [
                 {
-                    title: 'Pages',
+                    title: 'header.pagesTitle',
                     items: [
                         {
-                            text: 'Home',
+                            text: 'header.homePage',
                             route: '/'
                         },
                         {
-                            text: 'Profile',
+                            text: 'header.profilePage',
                             route: '/member/profile'
                         },
                     ]
                 },
                 {
-                    title: 'Actions',
+                    title: 'header.actionsTitle',
                     items: [
                         {
-                            text: 'Post a new photo',
+                            text: 'header.postPhotoAction',
                             route: '/'
                         },
                         {
-                            text: 'Log out',
+                            text: 'header.logOutAction',
                             action: this.logOutAction
                         },
                     ]
@@ -78,7 +81,7 @@ export default {
         this.$router.push('/account/login');
       },
       search() {
-          return ['prvi', 'drugi', 'treci'];
+        return ['prvi', 'drugi', 'treci'];
       }
     }
 };

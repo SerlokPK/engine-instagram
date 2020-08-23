@@ -8,7 +8,7 @@
     no-caret
   >
     <template #button-content>
-      <span class="d-none d-sm-inline-block ml-1">Adam</span>
+      <span class="d-none d-sm-inline-block ml-1">{{ getUser.username }}</span>
       <font-awesome-icon
         class="ml-1 pt-1"
         icon="angle-down"
@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import DropdownGroup from '../ui/add-ons/dropdown-group';
+import DropdownGroup from '../ui/add-ons/DropdownGroup';
+import { mapGetters } from 'vuex';
 
 export default {
     components: {
@@ -48,7 +49,12 @@ export default {
         type: Array,
         required: true
       }
-    }
+    },
+    computed: {
+        ...mapGetters({
+            getUser: 'getUser'
+        })
+    },
 };
 </script>
 

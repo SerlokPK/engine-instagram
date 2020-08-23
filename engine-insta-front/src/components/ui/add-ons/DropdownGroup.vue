@@ -4,7 +4,7 @@
       v-if="title"
       class="dropdown-header text-uppercase"
     >
-      {{ title }}
+      {{ $t(title) }}
     </h5>
     <dropdown-item
       v-for="(item, index) in items"
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import DropdownItem from './dropdown-item';
+import DropdownItem from './DropdownItem';
 
 export default {
     components: {
