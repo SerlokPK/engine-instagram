@@ -65,5 +65,14 @@
     "confirmPasswordRequired": "Confirm password is required",
     "confirmPasswordNotSame": "Confirm password must be same as password",
     "resetPasswordSuccess": "Password successfully changed"
+  },
+  "header": {
+    "searchPlaceholder": "Search profiles",
+    "pagesTitle": "Pages",
+    "actionsTitle": "Actions",
+    "homePage": "Home",
+    "profilePage": "Profile",
+    "logOutAction": "Log out",
+    "postPhotoAction": "Post a new photo"
   }
 }

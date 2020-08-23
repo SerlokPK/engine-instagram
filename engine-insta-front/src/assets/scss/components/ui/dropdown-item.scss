@@ -1,0 +1,10 @@
+.router {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #00000038 !important;
+  }
+}

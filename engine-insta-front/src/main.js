@@ -7,11 +7,18 @@ import i18n from './plugins/i18n';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import '@trevoreyre/autocomplete-vue/dist/style.css';
 
 import { storeInitialInfo } from './router/middlewares/initialization';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
+library.add(fas);
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth) && !store.getters.isAuthenticated) {

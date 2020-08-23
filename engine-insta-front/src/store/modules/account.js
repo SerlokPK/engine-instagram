@@ -32,7 +32,6 @@ export const actions = {
                 context.dispatch('successNotification', "login.successfulLogin");
             }
         }catch (error) {
-            console.log(error);
             context.dispatch('errorNotification', error.data.errorMessage);
             
             return Promise.reject();
@@ -76,8 +75,10 @@ export const actions = {
             return Promise.reject();
         }
     },
-    logOut() {
+    logOut(context) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        context.commit('SET_TOKEN', null);
+        context.commit('SET_USER', null);
     }
 };
