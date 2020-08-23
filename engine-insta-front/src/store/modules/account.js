@@ -56,6 +56,14 @@ export const actions = {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
+    async forgotPassword(context, payload) {
+        try {
+            await AccountApi.forgotPassword(payload);
+            context.dispatch('successNotification', "forgotPassword.resetPasswordInitiated");
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+        }
+    },
     logOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');

@@ -5,6 +5,11 @@
         {{ $t('login.title') }}
       </h3>
     </div>
+    <div class="pb-2">
+      <router-link to="/account/register">
+        {{ $t('login.registerButton') }}
+      </router-link>
+    </div>
     <b-form
       @submit.prevent="onSubmit"
     >
@@ -47,8 +52,8 @@
         >
           {{ $t('login.submitButton') }}
         </b-button>
-        <router-link to="/account/register">
-          {{ $t('login.redirectButton') }}
+        <router-link to="/account/forgot-password">
+          {{ $t('login.forgotPasswordButton') }}
         </router-link>
       </div>
     </b-form>

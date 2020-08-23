@@ -7,13 +7,16 @@ export default {
             transformResponse: [
                 ...api.defaults.transformResponse,
                 LoginTransformer.transform
-              ]
+            ]
         });
     },
-    register(data) {
-        return api.post('/account/register', data);
+    register(payload) {
+        return api.post('/account/register', payload);
     },
     activateAccount(userKey) {
         return api.patch(`/account/activate/${userKey}`);
+    },
+    forgotPassword(payload) {
+        return api.patch(`/account/forgotpassword`, payload);
     }
 };

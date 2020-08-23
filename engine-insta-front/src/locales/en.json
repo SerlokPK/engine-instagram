@@ -12,7 +12,8 @@
     "successfulLogin": "You've been successfully logged in",
     "submitButton": "Submit",
     "title": "Welcome, please log in",
-    "redirectButton": "Don't have an account?"
+    "registerButton": "Don't have an account?",
+    "forgotPasswordButton": "Forgot password?"
   },
   "register": {
     "title": "Welcome, please register",
@@ -34,10 +35,19 @@
     "emailFormat": "Email doesn't have valid format",
     "usernameRequired": "Username is required",
     "usernameNoWhitespace": "Username can't contain whitespace",
-    "successfulRegistration": "You've been successfully registered",
+    "successfulRegistration": "You've been successfully registered, check email",
     "redirectButton": "Already registered?"
   },
   "activateAccount": {
     "successfulActivation": "Account successfully activated"
+  },
+  "forgotPassword": {
+    "emailLabel": "Email address:",
+    "emailPlaceholder": "Enter email",
+    "loginButton": "Want to log in?",
+    "submitButton": "Submit",
+    "registerButton": "Don't have an account?",
+    "title": "Forgot password",
+    "resetPasswordInitiated": "Success! Check mail for link to reset password"
   }
 }
