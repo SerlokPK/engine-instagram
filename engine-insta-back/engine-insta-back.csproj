@@ -220,6 +220,7 @@
     <Content Include="Global.asax" />
     <Content Include="MailTemplates\en\AccountActivated.html" />
     <Content Include="MailTemplates\en\ResetPassword.html" />
+    <Content Include="MailTemplates\en\ResetPasswordDone.html" />
     <Content Include="MailTemplates\en\UserRegistered.html" />
     <Content Include="MailTemplates\en\_EmailLayout.html" />
     <Content Include="Scripts\bootstrap.js" />

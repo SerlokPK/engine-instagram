@@ -62,12 +62,14 @@ export const actions = {
             context.dispatch('successNotification', "forgotPassword.resetPasswordInitiated");
         }catch (error) {
             context.dispatch('errorNotification', error.data.errorMessage);
+
+            return Promise.reject();
         }
     },
     async resetPassword(context, payload) {
         try {
             await AccountApi.resetPassword(payload);
-            context.dispatch('successNotification', "forgotPassword.resetPasswordSuccess");
+            context.dispatch('successNotification', "resetPassword.resetPasswordSuccess");
         }catch (error) {
             context.dispatch('errorNotification', error.data.errorMessage);
 

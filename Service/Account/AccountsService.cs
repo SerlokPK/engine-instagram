@@ -40,7 +40,7 @@ namespace Service.Account
             var user = _accountsRepository.ForgotPassword(email);
             if (user != null)
             {
-                var link = $"{AppSettings.WebsiteUrl}/account/resetpassword/{user.ResetKey}";
+                var link = $"{AppSettings.WebsiteUrl}/account/reset-password/{user.ResetKey}";
                 _mailService.ResetPasswordSendMail(languageSign, user.Email, user.Username, link);
             }
         }

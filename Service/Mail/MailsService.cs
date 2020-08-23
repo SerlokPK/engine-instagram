@@ -43,7 +43,7 @@ namespace Service.Mail
 
         public bool ResetPasswordSendMail(string languageSign, string email, string username, string link)
         {
-            var body = CreateEmailBody(languageSign, "AccountActivated");
+            var body = CreateEmailBody(languageSign, "ResetPassword");
             body = body.Replace("{name}", username);
             body = body.Replace("{link}", link);
 

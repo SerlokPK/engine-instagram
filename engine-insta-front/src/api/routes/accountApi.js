@@ -17,7 +17,7 @@ export default {
         return api.patch(`/account/activate/${userKey}`);
     },
     forgotPassword(payload) {
-        return api.patch(`/account/forgotpassword`, payload);
+        return api.patch(`/account/forgotpassword`, `=${payload}`);
     },
     resetPassword(payload) {
         return api.patch(`/account/resetpassword`, payload);

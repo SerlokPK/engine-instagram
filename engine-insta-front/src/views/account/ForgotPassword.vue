@@ -80,10 +80,15 @@ export default {
         forgotPassword: "forgotPassword"
       }),
       async onSubmit() {
-        this.$v.form.$touch();
+        try {
+          this.$v.form.$touch();
           if (!this.$v.form.$anyError) {
-            await this.forgotPassword(this.form);
+            await this.forgotPassword(this.form.email);
+            this.$router.push('/account/login');
           }
+        }catch(error) {
+          //
+        }
       },
     }
 };

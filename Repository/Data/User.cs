@@ -36,7 +36,6 @@ namespace Repository.Data
         [StringLength(32)]
         public string UserKey { get; set; }
 
-        [Required]
         [StringLength(32)]
         public string ResetKey { get; set; }
 

@@ -151,7 +151,6 @@ namespace Repository.Account
                     Created = DateTime.Now,
                     Status = UserStatus.Pending.Status,
                     UserKey = PasswordHelper.GenerateUniqueKey(Common.Constants.Account.UniqueKeyLength),
-                    ResetKey = PasswordHelper.GenerateUniqueKey(Common.Constants.Account.UniqueKeyLength),
                     Email = email,
                 };
 
@@ -173,8 +172,6 @@ namespace Repository.Account
 
                 if (user != null && IsResetKeyValid(user.ResetKeyTime))
                 {
-                    var resetKeyTime = user.ResetKeyTime;
-
                     user.PasswordSalt = saltPassword;
                     user.Password = shaPassword;
                     user.ResetKey = null;
@@ -184,8 +181,7 @@ namespace Repository.Account
                     return new UserReset
                     {
                         Username = user.Username,
-                        Email = user.Email,
-                        ResetKeyTime = resetKeyTime
+                        Email = user.Email
                     };
                 }
 

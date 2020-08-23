@@ -64,6 +64,6 @@
     "passwordFormat": "Password must have 1 uppercase, 1 lowercase, 1 digit and 1 special character",
     "confirmPasswordRequired": "Confirm password is required",
     "confirmPasswordNotSame": "Confirm password must be same as password",
-    "resetPasswordSuccess": "password successfully changed"
+    "resetPasswordSuccess": "Password successfully changed"
   }
 }
