@@ -32,7 +32,6 @@ export const actions = {
                 context.dispatch('successNotification', "login.successfulLogin");
             }
         }catch (error) {
-            console.log(error);
             context.dispatch('errorNotification', error.data.errorMessage);
             
             return Promise.reject();

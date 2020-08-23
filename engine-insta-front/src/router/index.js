@@ -9,7 +9,7 @@ import RegisterPage from '../views/account/Register';
 import ActivatePage from '../views/account/ActivateAccount';
 import ForgotPasswordPage from '../views/account/ForgotPassword';
 import ResetPasswordPage from '../views/account/ResetPassword';
-import TestPage from '../views/member/Test';
+import HomePage from '../views/member/Home';
 
 Vue.use(Router);
 
@@ -54,8 +54,8 @@ const routes = [
       children: [
         {
           path: '/',
-          name: 'Test',
-          component: TestPage
+          name: 'Home',
+          component: HomePage
         }
       ]
     }
