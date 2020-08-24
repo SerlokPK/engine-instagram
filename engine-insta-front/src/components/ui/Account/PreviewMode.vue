@@ -9,7 +9,6 @@
         id="email"
         v-model="user.email"
         disabled
-        :placeholder="$t('account.emailPlaceholder')"
       />
     </b-form-group>
 
@@ -22,7 +21,21 @@
         id="username"
         v-model="user.username"
         disabled
-        :placeholder="$t('account.usernamePlaceholder')"
+      />
+    </b-form-group>
+
+    <b-form-group
+      v-if="user.description"
+      :label="$t('account.descriptionLabel')"
+      label-for="textarea"
+      class="w-50"
+    >
+      <b-form-textarea
+        id="textarea"
+        v-model="user.description"
+        rows="3"
+        disabled
+        max-rows="6"
       />
     </b-form-group>
 

@@ -24,15 +24,6 @@ export const actions = {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
     },
-    async getSelfUser(context) {
-        try {
-            const response = await UsersApi.getUser(context.getters.getUser.userId);
-            
-            return response.data;
-        }catch (error) {
-            context.dispatch('errorNotification', error.data.errorMessage);
-        }
-    },
     async getUser(context, payload) {
         try {
             const response = await UsersApi.getUser(payload);
