@@ -5,7 +5,7 @@ using Common.Helpers;
 using Interface.Repositories;
 using Interface.Services;
 using Models.Account;
-using Models.Users;
+using Models.User;
 
 namespace Service.Account
 {
@@ -57,7 +57,7 @@ namespace Service.Account
             throw new UnauthorizedException(Localization.Login_WrongCredentials);
         }
 
-        public User Register(string email, string username, string password, string confirmPassword, string languageSign)
+        public Models.User.User Register(string email, string username, string password, string confirmPassword, string languageSign)
         {
             var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
             if (registeredUser != null)

@@ -3,7 +3,7 @@ using Common.Constants;
 using Common.Helpers;
 using Interface.Repositories;
 using Models.Account;
-using Models.Users;
+using Models.User;
 using System;
 using System.Linq;
 
@@ -81,7 +81,7 @@ namespace Repository.Account
                 {
                     return new UserAuth()
                     {
-                        User = new User
+                        User = new Models.User.User
                         {
                             UserId = user.UserId,
                             Status = user.Status,
@@ -98,7 +98,7 @@ namespace Repository.Account
 
                 var userAuth = new UserAuth
                 {
-                    User = new User
+                    User = new Models.User.User
                     {
                         UserId = user.UserId,
                         Status = user.Status,
@@ -159,7 +159,7 @@ namespace Repository.Account
 
                 return new RegisteredUser
                 {
-                    User = new User
+                    User = new Models.User.User
                     {
                         UserId = newUser.UserId,
                         Email = newUser.Email,

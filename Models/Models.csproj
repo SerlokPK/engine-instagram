@@ -56,6 +56,7 @@
     <Compile Include="User\User.cs" />
     <Compile Include="Account\UserActivated.cs" />
     <Compile Include="Account\UserAuth.cs" />
+    <Compile Include="User\UserSearched.cs" />
     <Compile Include="User\UserStatus.cs" />
   </ItemGroup>
   <ItemGroup />

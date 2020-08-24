@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Interface.Services;
 using System.Web.Http;
 
 namespace engine_insta_back.Controllers
@@ -6,23 +6,20 @@ namespace engine_insta_back.Controllers
     [RoutePrefix("api/users")]
     public class UserController : BaseController
     {
-        // GET: api/User
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private readonly IUsersService _usersService;
 
-        // GET: api/User/5
-        public string Get(int id)
+        public UserController(IUsersService usersService)
         {
-            return "value";
+            _usersService = usersService;
         }
 
         [HttpGet]
         [Route("{username}")]
-        public string Search(string username)
+        public IHttpActionResult Search(string username)
         {
-            return "value";
+            var users = _usersService.SearchUsers(username);
+
+            return Ok(users);
         }
     }
 }

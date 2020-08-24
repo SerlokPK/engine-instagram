@@ -14,8 +14,10 @@ namespace engine_insta_back.App_Start
     using Ninject.Web.Common.WebHost;
     using Repository.Account;
     using Repository.Admin;
+    using Repository.User;
     using Service.Account;
     using Service.Mail;
+    using Service.User;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +67,7 @@ namespace engine_insta_back.App_Start
         {
             kernel.Bind<IAdminsRepository>().To<AdminsRepository>();
             kernel.Bind<IAccountsRepository>().To<AccountsRepository>();
+            kernel.Bind<IUsersRepository>().To<UsersRepository>();
         }
 
         /// <summary>
@@ -75,6 +78,7 @@ namespace engine_insta_back.App_Start
         {
             kernel.Bind<IAccountsService>().To<AccountsService>();
             kernel.Bind<IMailService>().To<MailsService>();
+            kernel.Bind<IUsersService>().To<UsersService>();
         }
     }
 }

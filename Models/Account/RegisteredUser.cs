@@ -1,10 +1,8 @@
-﻿using Models.Users;
-
-namespace Models.Account
+﻿namespace Models.Account
 {
     public class RegisteredUser
     {
-        public User User { get; set; }
+        public Models.User.User User { get; set; }
         public string UserKey { get; set; }
         public string ErrorMessage { get; set; }
     }
