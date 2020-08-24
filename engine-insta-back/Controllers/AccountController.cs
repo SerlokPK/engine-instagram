@@ -2,6 +2,7 @@
 using engine_insta_back.Filters;
 using Interface.Services;
 using Models.Account.ApiModels;
+using System;
 using System.Web.Http;
 
 namespace engine_insta_back.Controllers
@@ -28,9 +29,16 @@ namespace engine_insta_back.Controllers
 
         [HttpPost]
         [Route("register")]
-        public void Register(RegistrationModel model)
+        public IHttpActionResult Register(RegistrationModel model)
         {
-            _accountsService.Register(model.Email, model.Username, model.Password, model.ConfirmPassword, Localization.Base_EnLanguageSign);
+            var user =_accountsService.Register(model.Email, model.Username, model.Password, model.ConfirmPassword, Localization.Base_EnLanguageSign);
+
+            if(user == null)
+            {
+                return Ok();
+            }
+            
+            return Created(new Uri(Request.RequestUri.AbsoluteUri), user);
         }
 
         [HttpPatch]

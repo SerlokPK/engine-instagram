@@ -1,3 +1,5 @@
+import UsersApi from '../../api/routes/usersApi';
+
 export const state = () => ({
     user: null
 });
@@ -13,5 +15,13 @@ export const getters = {
 };
 
 export const actions = {
-    
+    async searchUsers(context, payload) {
+        try {
+            const response = await UsersApi.search(payload);
+            
+            return response.data;
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+        }
+    }
 };

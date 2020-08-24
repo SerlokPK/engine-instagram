@@ -1,6 +1,6 @@
 ﻿using Models.ModelAttributes;
 
-namespace Models.Users
+namespace Models.User
 {
     public class UserStatus
     {

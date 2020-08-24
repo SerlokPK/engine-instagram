@@ -12,6 +12,7 @@ import ResetPasswordPage from '../views/account/ResetPassword';
 
 import HomePage from '../views/member/Home';
 import ProfilePage from '../views/member/Profile';
+import AccountPage from '../views/member/Account';
 
 Vue.use(Router);
 
@@ -60,9 +61,14 @@ const routes = [
           component: HomePage
         },
         {
-          path: '/member/profile',
+          path: '/member/profile/:username',
           name: 'Profile',
           component: ProfilePage
+        },
+        {
+          path: '/member/account',
+          name: 'Account',
+          component: AccountPage
         }
       ]
     }

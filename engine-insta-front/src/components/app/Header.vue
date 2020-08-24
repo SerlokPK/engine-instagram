@@ -21,6 +21,7 @@
             <autocomplete
               :search="search"
               :placeholder="$t('header.searchPlaceholder')"
+              @submit="goToProfile"
             />
           </div>
           <dropdown-with-actions :groups="dropdownGroups" />
@@ -51,8 +52,8 @@ export default {
                             route: '/'
                         },
                         {
-                            text: 'header.profilePage',
-                            route: '/member/profile'
+                            text: 'header.accountPage',
+                            route: '/member/account'
                         },
                     ]
                 },
@@ -74,14 +75,18 @@ export default {
     },
     methods: {
       ...mapActions({
-        logOut: 'logOut'
+        logOut: 'logOut',
+        searchUsers: 'searchUsers'
       }),
       logOutAction() {
         this.logOut();
         this.$router.push('/account/login');
       },
-      search() {
-        return ['prvi', 'drugi', 'treci'];
+      async search(username) {
+        return username?.length > 2 ? await this.searchUsers(username) : [];
+      },
+      goToProfile(username) {
+        this.$router.push(`/member/profile/${username}`);
       }
     }
 };
