@@ -83,10 +83,7 @@ export default {
         this.$router.push('/account/login');
       },
       async search(username) {
-        if(username?.length > 2) {
-          return await this.searchUsers(username);
-        }
-        return [];
+        return username?.length > 2 ? await this.searchUsers(username) : [];
       },
       goToProfile(username) {
         this.$router.push(`/member/profile/${username}`);
