@@ -5,6 +5,6 @@ namespace Interface.Repositories
 {
     public interface IUsersRepository
     {
-        List<UserSearched> SearchUsers(string username);
+        List<string> SearchUsers(string username);
     }
 }

@@ -12,7 +12,7 @@ const api = axios.create({
 });
 
 const preRequestOptions = (request, store) => {
-    const token = store.getters['account/getToken'];
+    const token = store.getters.getToken;
     if(token) {
       request.headers.common = {
         ...request.headers.common,

@@ -21,6 +21,7 @@
             <autocomplete
               :search="search"
               :placeholder="$t('header.searchPlaceholder')"
+              @submit="showUser"
             />
           </div>
           <dropdown-with-actions :groups="dropdownGroups" />
@@ -74,14 +75,21 @@ export default {
     },
     methods: {
       ...mapActions({
-        logOut: 'logOut'
+        logOut: 'logOut',
+        searchUsers: 'searchUsers'
       }),
       logOutAction() {
         this.logOut();
         this.$router.push('/account/login');
       },
-      search() {
-        return ['prvi', 'drugi', 'treci'];
+      async search(username) {
+        if(username?.length > 2) {
+          return await this.searchUsers(username);
+        }
+        return [];
+      },
+      showUser(username) {
+        console.log(username);
       }
     }
 };

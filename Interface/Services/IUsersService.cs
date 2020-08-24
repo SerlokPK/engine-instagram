@@ -5,6 +5,6 @@ namespace Interface.Services
 {
     public interface IUsersService
     {
-        List<UserSearched> SearchUsers(string username);
+        List<string> SearchUsers(string username);
     }
 }

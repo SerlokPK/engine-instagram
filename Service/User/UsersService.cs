@@ -12,7 +12,7 @@ namespace Service.User
         {
             _usersRepository = usersRepository;
         }
-        public List<UserSearched> SearchUsers(string username)
+        public List<string> SearchUsers(string username)
         {
             return _usersRepository.SearchUsers(username);
         }
