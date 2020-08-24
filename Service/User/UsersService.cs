@@ -1,6 +1,5 @@
 ﻿using Interface.Repositories;
 using Interface.Services;
-using Models.User;
 using System.Collections.Generic;
 
 namespace Service.User
@@ -12,6 +11,12 @@ namespace Service.User
         {
             _usersRepository = usersRepository;
         }
+
+        public Models.User.User GetUser(int userId)
+        {
+            return _usersRepository.GetUser(userId);
+        }
+
         public List<string> SearchUsers(string username)
         {
             return _usersRepository.SearchUsers(username);

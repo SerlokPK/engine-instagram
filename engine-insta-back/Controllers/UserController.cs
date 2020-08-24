@@ -21,5 +21,14 @@ namespace engine_insta_back.Controllers
 
             return Ok(users);
         }
+
+        [HttpGet]
+        [Route("{userId}")]
+        public IHttpActionResult Get(int userId)
+        {
+            var user = _usersService.GetUser(userId);
+
+            return Ok(user);
+        }
     }
 }

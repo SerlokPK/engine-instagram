@@ -33,6 +33,9 @@ export default {
     return {
       user: {}
     };
+  },
+  created() {
+    //this.user
   }
 };
 </script>
