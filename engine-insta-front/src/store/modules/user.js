@@ -19,7 +19,7 @@ export const actions = {
         try {
             const response = await UsersApi.search(payload);
             
-            return response.data.users;
+            return response.data;
         }catch (error) {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
