@@ -21,7 +21,7 @@
             <autocomplete
               :search="search"
               :placeholder="$t('header.searchPlaceholder')"
-              @submit="showUser"
+              @submit="goToProfile"
             />
           </div>
           <dropdown-with-actions :groups="dropdownGroups" />
@@ -52,8 +52,8 @@ export default {
                             route: '/'
                         },
                         {
-                            text: 'header.profilePage',
-                            route: '/member/profile'
+                            text: 'header.accountPage',
+                            route: '/member/account'
                         },
                     ]
                 },
@@ -88,8 +88,8 @@ export default {
         }
         return [];
       },
-      showUser(username) {
-        console.log(username);
+      goToProfile(username) {
+        this.$router.push(`/member/profile/${username}`);
       }
     }
 };
