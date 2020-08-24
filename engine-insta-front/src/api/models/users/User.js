@@ -6,4 +6,4 @@ export default class User {
       this.description = item.Description;
       this.status = item.Status;
     }
-  }
+}
