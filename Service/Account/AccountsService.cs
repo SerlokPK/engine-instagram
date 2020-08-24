@@ -57,7 +57,7 @@ namespace Service.Account
             throw new UnauthorizedException(Localization.Login_WrongCredentials);
         }
 
-        public void Register(string email, string username, string password, string confirmPassword, string languageSign)
+        public User Register(string email, string username, string password, string confirmPassword, string languageSign)
         {
             var registeredUser = _accountsRepository.Register(email, username, password, confirmPassword);
             if (registeredUser != null)
@@ -67,10 +67,12 @@ namespace Service.Account
                     var link = $"{AppSettings.WebsiteUrl}/account/activate/{registeredUser.UserKey}";
                     _mailService.RegisteredUserSendMail(languageSign, email, username, link);
 
-                    return;
+                    return registeredUser.User;
                 }
                 throw new ConflictException(registeredUser.ErrorMessage);
             }
+
+            return null;
         }
 
         public void ResetPassword(string password, string resetKey, string languageSign)

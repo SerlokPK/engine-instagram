@@ -157,7 +157,17 @@ namespace Repository.Account
                 context.Users.Add(newUser);
                 context.SaveChanges();
 
-                return new RegisteredUser { UserId = userId, UserKey = newUser.UserKey };
+                return new RegisteredUser
+                {
+                    User = new User
+                    {
+                        UserId = newUser.UserId,
+                        Email = newUser.Email,
+                        Username = newUser.Username,
+                        Status = newUser.Status
+                    },
+                    UserKey = newUser.UserKey
+                };
             }
         }
 
