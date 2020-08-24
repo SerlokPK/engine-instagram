@@ -20,4 +20,11 @@
   &__dropdown-items {
     box-shadow: 0 0 1px 1px #00000038;
   }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 69%;
+  }
 }

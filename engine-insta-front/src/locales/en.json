@@ -74,5 +74,13 @@
     "accountPage": "Account",
     "logOutAction": "Log out",
     "postPhotoAction": "Post a new photo"
+  },
+  "account": {
+    "emailLabel": "Email address:",
+    "emailPlaceholder": "Enter email",
+    "usernameLabel": "Username:",
+    "usernamePlaceholder": "Enter username",
+    "editButton": "Edit account",
+    "deleteButton": "Delete account"
   }
 }
