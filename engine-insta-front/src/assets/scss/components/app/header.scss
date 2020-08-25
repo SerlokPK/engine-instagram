@@ -1,12 +1,14 @@
 .header-wrapper {
   display: flex;
   align-items: center;
+  position: sticky;
   top: 0;
   left: 0;
   padding-top: 15px;
   padding-bottom: 15px;
   z-index: 100;
   box-shadow: 0px -7px 20px 0px rgba(108, 108, 108, 0.38);
+  background-color: white;
 
   &__dropdown {
     display: inline-block;
@@ -17,5 +19,12 @@
 
   &__dropdown-items {
     box-shadow: 0 0 1px 1px #00000038;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 69%;
   }
 }

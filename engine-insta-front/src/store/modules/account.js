@@ -26,7 +26,7 @@ export const actions = {
             if(response.data.login.user.status === USER_CONSTANTS.statusActive) {
                 localStorage.setItem('token', response.data.login.token);
                 context.commit("SET_TOKEN", response.data.login.token);
-                localStorage.setItem('user', JSON.stringify(response.data.login.user));
+                localStorage.setItem('userId', response.data.login.user.userId);
                 context.commit("SET_USER", response.data.login.user);
 
                 context.dispatch('successNotification', "login.successfulLogin");

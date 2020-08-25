@@ -1,10 +1,22 @@
 <template>
-  <div>Account page</div>
+  <div>
+    <preview-mode :user="getUser" />
+  </div>
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex';
+import PreviewMode from '../../components/ui/Account/PreviewMode';
 
+export default {
+  components: {
+    PreviewMode
+  },
+  computed: {
+    ...mapGetters({
+      getUser: 'getUser'
+    })
+  }
 };
 </script>
 

@@ -15,7 +15,7 @@
           </figure>
         </router-link>
         <div
-          class="d-flex align-items-center w-75 justify-content-between"
+          class="header-wrapper__search"
         >
           <div class="content w-50">
             <autocomplete

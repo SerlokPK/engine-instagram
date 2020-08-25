@@ -7,10 +7,9 @@ export const storeInitialInfo = async () => {
             store.commit('SET_TOKEN', token);
         }
 
-        let user = localStorage.getItem('user');
-        if(user) {
-            user = JSON.parse(user);
-            store.commit("SET_USER", user);
+        let userId = localStorage.getItem('userId');
+        if(userId) {
+            await store.dispatch('getUser', userId);
         }
     } catch(error) {
         Promise.resolve(error);

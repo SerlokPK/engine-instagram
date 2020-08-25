@@ -1,7 +1,11 @@
 <template>
   <div class="member-wrapper">
     <app-header />
-    <router-view />
+    <div class="container-xl pt-5">
+      <div class="member-wrapper__content-wrapper">
+        <router-view class="member-wrapper__content-wrapper-router-view" />
+      </div>
+    </div>
   </div>
 </template>
 

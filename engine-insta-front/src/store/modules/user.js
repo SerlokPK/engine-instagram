@@ -23,5 +23,15 @@ export const actions = {
         }catch (error) {
             context.dispatch('errorNotification', error.data.errorMessage);
         }
+    },
+    async getUser(context, payload) {
+        try {
+            const response = await UsersApi.getUser(payload);
+            context.commit('SET_USER', response.data.user);
+            
+            return response.data;
+        }catch (error) {
+            context.dispatch('errorNotification', error.data.errorMessage);
+        }
     }
 };
